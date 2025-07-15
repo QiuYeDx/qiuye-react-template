@@ -59,14 +59,31 @@ const Layout: React.FC = () => {
         )}
       >
         <div className="flex items-center">
-          <div className={clsx(logoClassName, "text-xl font-bold mr-8")}>
+          <div
+            className={clsx(
+              logoClassName,
+              "text-xl font-bold mr-8 text-nowrap"
+            )}
+          >
             Qiuye Template
           </div>
+        </div>
+        <div
+          className={clsx(
+            "flex-1",
+            theme.mode === "dark"
+              ? "border-b border-b-gray-700"
+              : "border-b border-b-gray-200"
+          )}
+        >
           <Menu
             mode="horizontal"
             selectedKeys={[location.pathname]}
             items={menuItems}
-            className="border-none w-[120px]"
+            className={clsx(
+              "border-none",
+              theme.mode === "dark" ? "bg-gray-800" : "bg-white"
+            )}
             theme={theme.mode === "dark" ? "dark" : "light"}
           />
         </div>
