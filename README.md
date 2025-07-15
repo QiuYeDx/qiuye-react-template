@@ -12,7 +12,7 @@
 - 📱 **响应式设计** - 移动端适配
 - 🎯 **代码规范** - ESLint + Prettier
 - 💾 **状态管理** - Zustand轻量级状态管理
-- 🔄 **路由管理** - React Router v7
+- 🔄 **路由管理** - React Router v6
 - 📊 **动画支持** - React Spring
 
 ## 🛠️ 技术栈
@@ -34,7 +34,7 @@
 
 ### 环境要求
 
-- Node.js >= 18.0.0
+- Node.js >= 18.17.0
 - pnpm >= 8.0.0 (推荐)
 
 ```bash
@@ -46,6 +46,10 @@ cd qiuye-react-template
 
 # 如果使用 nvm，切换到推荐的 Node.js 版本
 nvm use
+
+# 检查环境（可选）
+chmod +x scripts/check-env.sh
+./scripts/check-env.sh
 
 # 安装 pnpm (如果尚未安装)
 npm install -g pnpm
@@ -229,6 +233,9 @@ pnpm build
 - [`QUICK_START.md`](./QUICK_START.md) - 快速开始指南
 - [`PNPM_GUIDE.md`](./PNPM_GUIDE.md) - pnpm 使用指南
 - [`scripts/setup.sh`](./scripts/setup.sh) - 一键设置脚本
+- [`scripts/check-env.sh`](./scripts/check-env.sh) - 环境检查脚本
+- [`scripts/verify-install.sh`](./scripts/verify-install.sh) - 安装验证脚本
+- [`TROUBLESHOOTING.md`](./TROUBLESHOOTING.md) - 故障排除指南
 
 ## 🤝 贡献
 

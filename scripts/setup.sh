@@ -6,14 +6,48 @@ echo "🚀 开始设置 Qiuye React Template..."
 
 # 检查 Node.js
 if ! command -v node &> /dev/null; then
-    echo "❌ 请先安装 Node.js (版本 >= 18)"
+    echo "❌ 请先安装 Node.js (版本 >= 18.17.0)"
     exit 1
 fi
 
 # 检查 Node.js 版本
-NODE_VERSION=$(node -v | cut -d'v' -f2 | cut -d'.' -f1)
-if [ "$NODE_VERSION" -lt 18 ]; then
-    echo "❌ Node.js 版本过低，请升级到 18 或更高版本 (当前版本: $(node -v))"
+NODE_VERSION=$(node -v | cut -d'v' -f2)
+REQUIRED_VERSION="18.17.0"
+
+# 版本比较函数
+version_compare() {
+    if [ "$1" = "$2" ]; then
+        return 0
+    fi
+    
+    local IFS=.
+    local i ver1=($1) ver2=($2)
+    
+    # 填充缺失的版本号部分
+    for ((i=${#ver1[@]}; i<${#ver2[@]}; i++)); do
+        ver1[i]=0
+    done
+    for ((i=${#ver2[@]}; i<${#ver1[@]}; i++)); do
+        ver2[i]=0
+    done
+    
+    for ((i=0; i<${#ver1[@]}; i++)); do
+        if [[ -z ${ver2[i]} ]]; then
+            ver2[i]=0
+        fi
+        if ((10#${ver1[i]} > 10#${ver2[i]})); then
+            return 1
+        fi
+        if ((10#${ver1[i]} < 10#${ver2[i]})); then
+            return 2
+        fi
+    done
+    return 0
+}
+
+version_compare "$NODE_VERSION" "$REQUIRED_VERSION"
+if [ $? -eq 2 ]; then
+    echo "❌ Node.js 版本过低，请升级到 18.17.0 或更高版本 (当前版本: v$NODE_VERSION)"
     exit 1
 fi
 

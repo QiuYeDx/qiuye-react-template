@@ -7,11 +7,15 @@
 git clone <your-repo-url> my-react-app
 cd my-react-app
 
-# 2. 运行设置脚本
+# 2. 检查环境（可选）
+chmod +x scripts/check-env.sh
+./scripts/check-env.sh
+
+# 3. 运行设置脚本
 chmod +x scripts/setup.sh
 ./scripts/setup.sh
 
-# 3. 启动开发服务器
+# 4. 启动开发服务器
 pnpm dev
 ```
 
@@ -24,7 +28,7 @@ pnpm dev
 - [x] **Vite** - 极速构建工具
 - [x] **Ant Design** - 企业级UI组件库
 - [x] **Tailwind CSS** - 原子化CSS框架
-- [x] **React Router v7** - 路由管理
+- [x] **React Router v6** - 路由管理
 - [x] **Zustand** - 轻量级状态管理
 - [x] **React i18next** - 国际化支持
 - [x] **Axios** - HTTP请求库
