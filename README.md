@@ -6,7 +6,8 @@
 
 - 🚀 **极速开发体验** - 基于Vite的极速构建
 - 📦 **开箱即用** - 预配置的开发环境
-- 🎨 **现代化UI** - 集成Ant Design + Tailwind CSS
+- 🎨 **现代化UI** - 集成shadcn/ui + Tailwind CSS v4
+- 🌙 **明暗模式支持** - 完整的主题切换功能，支持系统偏好检测
 - 🌍 **国际化支持** - 内置React i18next
 - 🔒 **类型安全** - 完整的TypeScript支持
 - 📱 **响应式设计** - 移动端适配
@@ -20,8 +21,8 @@
 - **框架**: React 18
 - **语言**: TypeScript
 - **构建工具**: Vite
-- **UI库**: Ant Design
-- **样式**: Tailwind CSS
+- **UI库**: shadcn/ui
+- **样式**: Tailwind CSS v4
 - **状态管理**: Zustand
 - **路由**: React Router
 - **国际化**: React i18next
@@ -82,18 +83,24 @@ pnpm test
 ```
 src/
 ├── components/          # 通用组件
-│   └── Layout/         # 布局组件
+│   ├── Layout/         # 布局组件
+│   ├── ThemeProvider.tsx # 主题提供者组件
+│   └── ui/             # shadcn/ui 组件库
 ├── pages/              # 页面组件
 │   ├── Home/          # 首页
 │   ├── About/         # 关于页面
 │   └── NotFound/      # 404页面
 ├── routes/             # 路由配置
 ├── store/              # 状态管理
-│   ├── useThemeStore.ts
+│   ├── useThemeStore.ts # 主题状态管理
 │   └── useUserStore.ts
 ├── utils/              # 工具函数
 │   ├── request.ts     # HTTP请求
 │   └── storage.ts     # 本地存储
+├── lib/                # 工具库
+│   └── utils.ts       # 通用工具函数
+├── styles/             # 样式文件
+│   └── globals.css    # 全局样式和主题变量
 ├── i18n/               # 国际化
 │   ├── index.ts
 │   └── locales/
@@ -101,7 +108,7 @@ src/
 │       └── en-US.json
 ├── App.tsx             # 根组件
 ├── main.tsx            # 入口文件
-└── index.css           # 全局样式
+└── vite-env.d.ts       # Vite 类型定义
 ```
 
 ## 🔧 配置
@@ -121,12 +128,38 @@ VITE_API_BASE_URL=http://localhost:3001/api
 
 ### 主题配置
 
-在 `src/store/useThemeStore.ts` 中配置主题：
+项目内置完整的明暗模式支持，在 `src/store/useThemeStore.ts` 中配置主题：
 
 ```typescript
 theme: {
   primaryColor: '#1890ff',
-  mode: 'light',
+  mode: 'light', // 'light' | 'dark'
+}
+```
+
+#### 明暗模式特性
+
+- ✅ **自动主题检测** - 检测系统偏好设置并应用对应主题
+- ✅ **状态持久化** - 主题选择自动保存到 localStorage
+- ✅ **平滑切换** - 带有过渡动画的主题切换体验
+- ✅ **CSS 变量系统** - 基于 CSS 变量的主题系统，易于自定义
+- ✅ **完整组件支持** - 所有 shadcn/ui 组件都支持明暗模式
+
+#### 主题自定义
+
+在 `src/styles/globals.css` 中定义了完整的主题变量：
+
+```css
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  /* 更多亮色主题变量... */
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  /* 更多暗色主题变量... */
 }
 ```
 
@@ -135,6 +168,65 @@ theme: {
 在 `src/i18n/locales/` 目录下添加语言文件。
 
 ## 📚 使用指南
+
+### 主题切换
+
+#### 程序化切换主题
+
+```typescript
+import { useThemeStore } from '@/store/useThemeStore'
+
+function MyComponent() {
+  const { theme, setMode } = useThemeStore()
+  
+  const toggleTheme = () => {
+    setMode(theme.mode === 'light' ? 'dark' : 'light')
+  }
+
+  return (
+    <button onClick={toggleTheme}>
+      当前主题: {theme.mode}
+    </button>
+  )
+}
+```
+
+#### 在组件中使用暗色模式样式
+
+```tsx
+function Card() {
+  return (
+    <div className="bg-background text-foreground border border-border rounded-lg p-4">
+      <h2 className="text-lg font-bold text-foreground">
+        卡片标题
+      </h2>
+      <p className="text-muted-foreground">
+        这个卡片在明暗模式下都很好看
+      </p>
+    </div>
+  )
+}
+```
+
+#### 条件渲染基于主题
+
+```tsx
+import { useThemeStore } from '@/store/useThemeStore'
+
+function ThemedIcon() {
+  const { theme } = useThemeStore()
+  
+  return (
+    <div>
+      {theme.mode === 'dark' ? (
+        <MoonIcon className="w-6 h-6" />
+      ) : (
+        <SunIcon className="w-6 h-6" />
+      )}
+    </div>
+  )
+}
+```
 
 ### 添加新页面
 
@@ -189,13 +281,55 @@ pnpm add -D <package-name>
 pnpm add -D @types/<package-name>
 ```
 
-## 🎨 样式
+## 🎨 样式系统
 
-项目使用Tailwind CSS + Ant Design的组合：
+项目使用 shadcn/ui + Tailwind CSS v4 的现代化样式系统：
 
-- 使用Tailwind CSS进行快速布局和样式
-- 使用Ant Design提供完整的组件库
-- 自定义CSS类在 `src/index.css` 中定义
+### 设计系统特点
+
+- **shadcn/ui 组件** - 现代化、可访问性友好的 UI 组件库
+- **Tailwind CSS v4** - 最新版本的原子化 CSS 框架
+- **CSS 变量系统** - 基于 CSS 变量的主题系统，支持明暗模式
+- **语义化颜色** - 使用语义化的颜色名称，如 `bg-background`、`text-foreground`
+
+### 推荐的样式使用方法
+
+```tsx
+// ✅ 推荐：使用语义化颜色
+<div className="bg-background text-foreground border border-border">
+  <h1 className="text-primary">标题</h1>
+  <p className="text-muted-foreground">描述文本</p>
+</div>
+
+// ✅ 推荐：使用 dark: 前缀适配暗色模式
+<div className="bg-white dark:bg-gray-800 text-black dark:text-white">
+  内容
+</div>
+
+// ❌ 不推荐：硬编码颜色值
+<div style={{ backgroundColor: '#ffffff', color: '#000000' }}>
+  内容
+</div>
+```
+
+### 自定义组件样式
+
+```tsx
+import { cn } from '@/lib/utils'
+
+function CustomButton({ className, ...props }) {
+  return (
+    <button 
+      className={cn(
+        "bg-primary text-primary-foreground hover:bg-primary/90",
+        "rounded-md px-4 py-2 transition-colors",
+        className
+      )}
+      {...props}
+    />
+  )
+}
+```
 
 ## 📱 响应式设计
 
@@ -203,7 +337,7 @@ pnpm add -D @types/<package-name>
 
 - 移动端优先的设计理念
 - 使用Tailwind CSS的响应式工具类
-- Ant Design组件的内置响应式支持
+- shadcn/ui 组件的内置响应式支持
 
 ## 🔍 代码规范
 
@@ -237,6 +371,45 @@ pnpm build
 - [`scripts/verify-install.sh`](./scripts/verify-install.sh) - 安装验证脚本
 - [`TROUBLESHOOTING.md`](./TROUBLESHOOTING.md) - 故障排除指南
 
+## 🎨 主题最佳实践
+
+### 1. 优先使用语义化颜色
+
+```tsx
+// ✅ 好的做法
+<Card className="bg-card text-card-foreground border-border">
+  <CardHeader>
+    <CardTitle className="text-primary">标题</CardTitle>
+  </CardHeader>
+  <CardContent>
+    <p className="text-muted-foreground">内容</p>
+  </CardContent>
+</Card>
+```
+
+### 2. 为图片和媒体内容适配暗色模式
+
+```tsx
+function Logo() {
+  const { theme } = useThemeStore()
+  
+  return (
+    <img 
+      src={theme.mode === 'dark' ? '/logo-dark.png' : '/logo-light.png'}
+      alt="Logo" 
+      className="h-8 w-auto"
+    />
+  )
+}
+```
+
+### 3. 测试明暗模式兼容性
+
+确保在两种模式下都测试你的组件：
+- 文本对比度是否足够
+- 边框和分隔线是否清晰可见
+- 交互状态（hover、focus）是否正常
+
 ## 🤝 贡献
 
 欢迎提交Pull Request和Issue！
@@ -247,4 +420,4 @@ MIT License
 
 ## 🙏 致谢
 
-感谢所有开源项目的贡献者们！ 
+感谢所有开源项目的贡献者们！
