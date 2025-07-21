@@ -26,16 +26,60 @@ const About: React.FC = () => {
 
   // 技术栈数据
   const techStack = [
-    { name: "React 18", type: "framework", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300" },
-    { name: "TypeScript", type: "language", color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300" },
-    { name: "Vite", type: "build", color: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300" },
-    { name: "Tailwind CSS v4", type: "styling", color: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300" },
-    { name: "Shadcn/ui", type: "ui", color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300" },
-    { name: "Zustand", type: "state", color: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300" },
-    { name: "React Router", type: "routing", color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300" },
-    { name: "React i18next", type: "i18n", color: "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300" },
-    { name: "Axios", type: "http", color: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300" },
-    { name: "React Spring", type: "animation", color: "bg-lime-100 text-lime-800 dark:bg-lime-900 dark:text-lime-300" },
+    {
+      name: "React 18",
+      type: "framework",
+      color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
+    },
+    {
+      name: "TypeScript",
+      type: "language",
+      color: "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-300",
+    },
+    {
+      name: "Vite",
+      type: "build",
+      color:
+        "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300",
+    },
+    {
+      name: "Tailwind CSS v4",
+      type: "styling",
+      color:
+        "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
+    },
+    {
+      name: "Shadcn/ui",
+      type: "ui",
+      color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
+    },
+    {
+      name: "Zustand",
+      type: "state",
+      color:
+        "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300",
+    },
+    {
+      name: "React Router",
+      type: "routing",
+      color: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",
+    },
+    {
+      name: "React i18next",
+      type: "i18n",
+      color: "bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-300",
+    },
+    {
+      name: "Axios",
+      type: "http",
+      color:
+        "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
+    },
+    {
+      name: "React Spring",
+      type: "animation",
+      color: "bg-lime-100 text-lime-800 dark:bg-lime-900 dark:text-lime-300",
+    },
   ];
 
   // 特性数据
@@ -106,9 +150,7 @@ const About: React.FC = () => {
     <div className="min-h-screen bg-background">
       {/* 页面标题 */}
       <animated.div style={titleAnimation} className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">
-          关于我们
-        </h1>
+        <h1 className="text-4xl font-bold mb-4">关于我们</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
           Qiuye React Template 是一个现代化的 React 项目脚手架，
           致力于为开发者提供最佳的开发体验和项目架构。
@@ -132,9 +174,7 @@ const About: React.FC = () => {
                   return (
                     <animated.div key={index} style={style}>
                       <div className="flex items-start space-x-3 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
-                        <div className="text-primary mt-1">
-                          {feature.icon}
-                        </div>
+                        <div className="text-primary mt-1">{feature.icon}</div>
                         <div>
                           <div className="font-semibold text-foreground mb-1">
                             {feature.title}
@@ -163,9 +203,7 @@ const About: React.FC = () => {
               <div className="space-y-4">
                 {timelineItems.map((item, index) => (
                   <div key={index} className="flex items-start space-x-3">
-                    <div className="flex-shrink-0 mt-1">
-                      {item.icon}
-                    </div>
+                    <div className="flex-shrink-0 mt-1">{item.icon}</div>
                     <div>
                       <div className="font-semibold text-foreground">
                         {item.title}
@@ -230,7 +268,9 @@ const About: React.FC = () => {
                 <Separator />
                 <div className="flex justify-between items-center py-2">
                   <span className="text-muted-foreground">最后更新</span>
-                  <span className="font-semibold text-foreground">{new Date().toLocaleDateString()}</span>
+                  <span className="font-semibold text-foreground">
+                    {new Date().toLocaleDateString()}
+                  </span>
                 </div>
                 <Separator />
                 <div className="flex justify-between items-center py-2">
@@ -256,12 +296,12 @@ const About: React.FC = () => {
               <HeartIcon className="w-6 h-6 mr-2 text-red-500" />
               感谢
             </h3>
-            
+
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
               感谢所有开源项目的贡献者们，没有你们的努力就没有这个美好的开发生态。
               也感谢每一位使用这个模板的开发者，你们的反馈让项目变得更好。
             </p>
-            
+
             <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-medium">
               <HeartIcon className="w-5 h-5 mr-2" />
               Made with Love

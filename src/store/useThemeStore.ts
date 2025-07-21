@@ -1,21 +1,21 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 interface ThemeState {
   theme: {
-    primaryColor: string
-    mode: 'light' | 'dark'
-  }
-  setPrimaryColor: (color: string) => void
-  setMode: (mode: 'light' | 'dark') => void
+    primaryColor: string;
+    mode: "light" | "dark";
+  };
+  setPrimaryColor: (color: string) => void;
+  setMode: (mode: "light" | "dark") => void;
 }
 
 export const useThemeStore = create<ThemeState>()(
   persist(
     (set) => ({
       theme: {
-        primaryColor: '#1890ff',
-        mode: 'light',
+        primaryColor: "#1890ff",
+        mode: "light",
       },
       setPrimaryColor: (color) =>
         set((state) => ({
@@ -27,7 +27,7 @@ export const useThemeStore = create<ThemeState>()(
         })),
     }),
     {
-      name: 'theme-store',
+      name: "theme-store",
     }
   )
-) 
+);
