@@ -82,7 +82,7 @@ const Home: React.FC = () => {
   return (
     <div className="min-h-screen bg-background relative">
       {/* 背景装饰 */}
-      <div className="absolute inset-0 z-100">
+      <div className="absolute inset-0 z-100 pointer-events-none">
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
         <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/5 rounded-full blur-2xl"></div>
       </div>
@@ -108,7 +108,7 @@ const Home: React.FC = () => {
             <Button
               onClick={handleGetStarted}
               size="lg"
-              className="px-8 py-3 text-base font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+              className="px-8 py-3 text-base font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
             >
               开始使用
               <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -118,7 +118,7 @@ const Home: React.FC = () => {
               variant="secondary"
               size="lg"
               onClick={handleViewDocs}
-              className="px-8 py-3 text-base font-medium rounded-xl hover:shadow-md transition-all duration-300"
+              className="px-8 py-3 text-base font-medium rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer"
             >
               查看文档
             </Button>
