@@ -9,11 +9,11 @@
 **错误信息：**
 ```
 Your Node version is incompatible with "...".
-Expected version: >=18.17.0
+Expected version: >=20.19.4
 Got: vX.X.X
 ```
 
-**原因：** 系统当前的 Node.js 版本低于项目要求的最低版本 18.17.0。
+**原因：** 系统当前的 Node.js 版本低于项目要求的最低版本 20.19.4。
 
 **解决方案：**
 
@@ -27,19 +27,19 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 source ~/.bashrc  # 或 source ~/.zshrc
 
 # 安装并使用项目推荐的 Node.js 版本
-nvm install 18.17.0
-nvm use 18.17.0
+nvm install 20.19.4
+nvm use 20.19.4
 
 # 设置为默认版本（可选）
-nvm alias default 18.17.0
+nvm alias default 20.19.4
 
 # 验证版本
-node --version  # 应该显示 v18.17.0
+node --version  # 应该显示 v20.19.4
 ```
 
-#### 方案 2: 直接安装 Node.js 18+
+#### 方案 2: 直接安装 Node.js 20+
 
-访问 [Node.js 官网](https://nodejs.org/) 下载并安装 18.17.0 或更高版本。
+访问 [Node.js 官网](https://nodejs.org/) 下载并安装 20.19.4 或更高版本。
 
 #### 方案 3: 使用项目的 .nvmrc 文件
 
@@ -78,10 +78,10 @@ Got: v18.17.0
 
 **解决方案：**
 
-项目已针对 Node.js 18.17.0+ 优化了依赖版本：
+项目已针对 Node.js 20.19.4+ 优化了依赖版本：
 
-- **React Router DOM**: 使用 v6.28.0 (兼容 Node.js 18.17.0+)
-- **TypeScript ESLint**: 使用 v6.21.0 (兼容 Node.js 18.17.0+)
+- **React Router DOM**: 使用 v6.28.0 (兼容 Node.js 20.19.4+)
+- **TypeScript ESLint**: 使用 v6.21.0 (兼容 Node.js 20.19.4+)
 
 如果遇到类似错误，请确保：
 

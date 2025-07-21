@@ -1,24 +1,72 @@
 import React from "react";
-import { Card, Row, Col, Button, Typography } from "antd";
 import { useTranslation } from "react-i18next";
-import { useSpring, animated } from "@react-spring/web";
-import toast from "react-hot-toast";
+import { useSpring, animated, useTrail } from "@react-spring/web";
+import { toast } from "sonner";
 import {
   RocketLaunchIcon,
   CogIcon,
   HeartIcon,
   ShieldCheckIcon,
+  SparklesIcon,
+  ArrowRightIcon,
 } from "@heroicons/react/24/outline";
-
-const { Title, Paragraph } = Typography;
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
 
-  const fadeIn = useSpring({
-    from: { opacity: 0, transform: "translateY(30px)" },
+  // 主要内容动画
+  const heroAnimation = useSpring({
+    from: { opacity: 0, transform: "translateY(50px)" },
     to: { opacity: 1, transform: "translateY(0px)" },
     config: { tension: 280, friction: 60 },
+    delay: 200,
+  });
+
+  // 特性卡片数据
+  const features = [
+    {
+      icon: <RocketLaunchIcon className="w-6 h-6" />,
+      title: "⚡ 极速开发",
+      description: "基于 Vite 和 Tailwind CSS v4 的现代化构建体验",
+      color: "text-blue-500",
+      bgColor: "bg-blue-50 dark:bg-blue-950/20",
+      badge: "v4",
+    },
+    {
+      icon: <CogIcon className="w-6 h-6" />,
+      title: "🔧 完整配置",
+      description: "TypeScript、ESLint、国际化等开箱即用",
+      color: "text-green-500",
+      bgColor: "bg-green-50 dark:bg-green-950/20",
+      badge: "Ready",
+    },
+    {
+      icon: <HeartIcon className="w-6 h-6" />,
+      title: "💝 开箱即用",
+      description: "集成最佳实践和常用组件库",
+      color: "text-red-500",
+      bgColor: "bg-red-50 dark:bg-red-950/20",
+      badge: "Best",
+    },
+    {
+      icon: <ShieldCheckIcon className="w-6 h-6" />,
+      title: "🛡️ 类型安全",
+      description: "完整的 TypeScript 类型定义和检查",
+      color: "text-purple-500",
+      bgColor: "bg-purple-50 dark:bg-purple-950/20",
+      badge: "Safe",
+    },
+  ];
+
+  // 特性卡片动画
+  const trail = useTrail(features.length, {
+    from: { opacity: 0, transform: "translateY(40px) scale(0.9)" },
+    to: { opacity: 1, transform: "translateY(0px) scale(1)" },
+    config: { tension: 280, friction: 60 },
+    delay: 600,
   });
 
   const handleGetStarted = () => {
@@ -31,70 +79,136 @@ const Home: React.FC = () => {
     });
   };
 
-  const features = [
-    {
-      icon: <RocketLaunchIcon className="h-full text-blue-500" />,
-      title: "快速开发",
-      description: "基于 Vite 的极速构建体验",
-    },
-    {
-      icon: <CogIcon className="h-full text-green-500" />,
-      title: "完整配置",
-      description: "包含 TypeScript、ESLint、Tailwind CSS",
-    },
-    {
-      icon: <HeartIcon className="h-full text-red-500" />,
-      title: "开箱即用",
-      description: "集成常用库和最佳实践",
-    },
-    {
-      icon: <ShieldCheckIcon className="h-full text-yellow-500" />,
-      title: "类型安全",
-      description: "完整的 TypeScript 类型定义",
-    },
-  ];
-
   return (
-    <animated.div style={fadeIn}>
-      <div className="text-center mb-12">
-        <Title level={1} className="mb-4 mt-8">
-          {t("pages.home.title")}
-        </Title>
-        <Paragraph className="text-lg text-gray-600 max-w-2xl mx-auto">
-          {t("pages.home.description")}
-        </Paragraph>
+    <div className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <animated.div style={heroAnimation} className="text-center mb-16">
+        <div className="relative">
+          {/* 背景装饰 */}
+          <div className="absolute inset-0 -z-10">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/5 rounded-full blur-2xl"></div>
+          </div>
+
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 scale-in">
+            <SparklesIcon className="w-4 h-4 mr-2" />
+            全新 Tailwind CSS v4 支持
+          </div>
+
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 slide-in-from-bottom">
+            现代化 React 模板
+          </h1>
+
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8 slide-in-from-bottom">
+            基于 React 18 + TypeScript + Vite + Tailwind CSS v4
+            构建的现代化项目脚手架， 集成最佳实践，让你专注于业务开发。
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 fade-in">
+            <Button
+              onClick={handleGetStarted}
+              size="lg"
+              className="px-8 py-3 text-base font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group"
+            >
+              开始使用
+              <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+
+            <Button
+              variant="secondary"
+              size="lg"
+              onClick={handleViewDocs}
+              className="px-8 py-3 text-base font-medium rounded-xl hover:shadow-md transition-all duration-300"
+            >
+              查看文档
+            </Button>
+          </div>
+        </div>
+      </animated.div>
+
+      {/* Features Section */}
+      <div className="mb-16">
+        <animated.div style={trail[0]} className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-foreground">
+            ✨ 核心特性
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
+            我们精心挑选并集成了最优秀的工具和最佳实践
+          </p>
+        </animated.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {trail.map((style, index) => {
+            const feature = features[index];
+            return (
+              <animated.div key={index} style={style}>
+                <Card className="h-full hover:shadow-lg transition-all duration-300 cursor-pointer group hover:-translate-y-1 border-border/50 hover:border-primary/30">
+                  <CardContent className="p-6 text-center">
+                    <div
+                      className={`${feature.bgColor} w-16 h-16 rounded-2xl center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}
+                    >
+                      <div className={feature.color}>{feature.icon}</div>
+                    </div>
+
+                    <div className="flex items-center justify-center mb-3">
+                      <h4 className="text-lg font-semibold text-foreground">
+                        {feature.title}
+                      </h4>
+                      <Badge
+                        variant="default"
+                        className="ml-2 text-xs font-bold"
+                      >
+                        {feature.badge}
+                      </Badge>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </animated.div>
+            );
+          })}
+        </div>
       </div>
 
-      <Row gutter={[24, 24]} className="mb-8">
-        {features.map((feature, index) => (
-          <Col key={index} xs={24} sm={12} lg={6}>
-            <Card className="h-full hover:shadow-lg transition-shadow">
-              <div className="mt-4 mb-4 h-16 flex justify-center items-center">
-                {feature.icon}
-              </div>
-              <Title level={4} className="mb-2">
-                {feature.title}
-              </Title>
-              <Paragraph type="secondary">{feature.description}</Paragraph>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+      {/* Tech Stack Section */}
+      <animated.div style={trail[features.length - 1]}>
+        <Card className="glass p-8 text-center">
+          <CardContent className="p-0">
+            <h3 className="text-2xl font-bold mb-6 text-foreground">
+              🛠️ 技术栈
+            </h3>
 
-      <div className="text-center">
-        <Button
-          type="primary"
-          size="large"
-          className="mr-4"
-          onClick={handleGetStarted}
-        >
-          开始使用
-        </Button>
-        <Button size="large" onClick={handleViewDocs}>
-          查看文档
-        </Button>
-      </div>
-    </animated.div>
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
+              {[
+                "React 18",
+                "TypeScript",
+                "Vite",
+                "Tailwind CSS v4",
+                "Shadcn/ui",
+                "Zustand",
+                "React Router",
+                "React i18next",
+              ].map((tech, index) => (
+                <div
+                  key={tech}
+                  className="px-4 py-2 bg-muted rounded-full text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors cursor-default scale-in"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
+                  {tech}
+                </div>
+              ))}
+            </div>
+
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              使用最新、最稳定的技术栈，确保项目的长期可维护性和高性能表现。
+            </p>
+          </CardContent>
+        </Card>
+      </animated.div>
+    </div>
   );
 };
 

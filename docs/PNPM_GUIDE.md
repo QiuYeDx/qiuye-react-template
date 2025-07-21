@@ -42,7 +42,7 @@ curl -fsSL https://get.pnpm.io/install.sh | sh -
 ### 环境要求
 
 本项目要求：
-- Node.js >= 18.17.0
+- Node.js >= 20.19.4
 - pnpm >= 8.0.0
 
 ### 版本检查

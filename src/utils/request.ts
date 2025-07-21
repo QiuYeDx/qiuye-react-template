@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
-import { message } from 'antd'
+import { toast } from 'sonner'
 import { useUserStore } from '@/store/useUserStore'
 
 // 创建axios实例
@@ -34,7 +34,7 @@ request.interceptors.response.use(
     if (data.code === 200) {
       return data.data
     } else {
-      message.error(data.message || '请求失败')
+      toast.error(data.message || '请求失败')
       return Promise.reject(new Error(data.message || '请求失败'))
     }
   },
@@ -44,23 +44,23 @@ request.interceptors.response.use(
     if (response) {
       switch (response.status) {
         case 401:
-          message.error('未授权，请重新登录')
+          toast.error('未授权，请重新登录')
           useUserStore.getState().logout()
           break
         case 403:
-          message.error('拒绝访问')
+          toast.error('拒绝访问')
           break
         case 404:
-          message.error('请求地址出错')
+          toast.error('请求地址出错')
           break
         case 500:
-          message.error('服务器内部错误')
+          toast.error('服务器内部错误')
           break
         default:
-          message.error('网络错误')
+          toast.error('网络错误')
       }
     } else {
-      message.error('网络错误')
+      toast.error('网络错误')
     }
     
     return Promise.reject(error)

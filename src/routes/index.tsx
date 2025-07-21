@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import { Spin } from "antd";
 import Layout from "@/components/Layout";
 
 // 懒加载页面组件
@@ -8,10 +7,10 @@ const HomePage = lazy(() => import("@/pages/Home"));
 const AboutPage = lazy(() => import("@/pages/About"));
 const NotFoundPage = lazy(() => import("@/pages/NotFound"));
 
-// 加载组件
+// 自定义加载组件
 const LoadingComponent = () => (
   <div className="flex justify-center items-center h-64">
-    <Spin size="large" />
+    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
   </div>
 );
 
