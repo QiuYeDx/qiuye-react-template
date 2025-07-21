@@ -25,6 +25,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const Layout: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -91,28 +96,30 @@ const Layout: React.FC = () => {
         </div>
 
         <div className="flex justify-end items-center space-x-2 basis-1/4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={toggleTheme}
-            className="w-10 h-10 rounded-lg transition-all duration-200 scale-in"
-            aria-label={
-              theme.mode === "light" ? "切换到暗色模式" : "切换到亮色模式"
-            }
-          >
-            {theme.mode === "light" ? (
-              <MoonIcon className="w-5 h-5" />
-            ) : (
-              <SunIcon className="w-5 h-5" />
-            )}
-          </Button>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+          <Tooltip delayDuration={300}>
+            <TooltipTrigger>
               <Button
+                asChild
                 variant="ghost"
                 size="sm"
-                className="w-10 h-10 rounded-lg transition-all duration-200 scale-in"
+                onClick={toggleTheme}
+                className="w-10 h-10 md:w-11 md:h-11 rounded-lg transition-all duration-200 scale-in cursor-pointer"
+              >
+                {theme.mode === "light" ? <MoonIcon /> : <SunIcon />}
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent side="bottom" align="center">
+              {theme.mode === "light" ? "切换到暗色模式" : "切换到亮色模式"}
+            </TooltipContent>
+          </Tooltip>
+
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Button
+                asChild
+                variant="ghost"
+                size="sm"
+                className="w-10 h-10 md:w-11 md:h-11 rounded-lg transition-all duration-200 scale-in cursor-pointer"
                 aria-label="语言选择"
               >
                 <GlobeAltIcon className="w-5 h-5" />
