@@ -80,17 +80,18 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <animated.div style={heroAnimation} className="text-center mb-16">
-        <div className="relative">
-          {/* 背景装饰 */}
-          <div className="absolute inset-0 -z-10">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
-            <div className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/5 rounded-full blur-2xl"></div>
-          </div>
+    <div className="min-h-screen bg-background relative">
+      {/* 背景装饰 */}
+      <div className="absolute inset-0 z-100">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-secondary/5 rounded-full blur-2xl"></div>
+      </div>
 
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6 scale-in">
+      {/* Hero Section */}
+      <div className="text-center mb-16">
+
+        <animated.div style={heroAnimation}>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             <SparklesIcon className="w-4 h-4 mr-2" />
             全新 Tailwind CSS v4 支持
           </div>
@@ -104,7 +105,7 @@ const Home: React.FC = () => {
             构建的现代化项目脚手架， 集成最佳实践，让你专注于业务开发。
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 fade-in">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Button
               onClick={handleGetStarted}
               size="lg"
@@ -123,8 +124,8 @@ const Home: React.FC = () => {
               查看文档
             </Button>
           </div>
-        </div>
-      </animated.div>
+        </animated.div>
+      </div>
 
       {/* Features Section */}
       <div className="mb-16">
@@ -194,7 +195,7 @@ const Home: React.FC = () => {
               ].map((tech, index) => (
                 <div
                   key={tech}
-                  className="px-4 py-2 bg-muted rounded-full text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors cursor-default scale-in"
+                  className="px-4 py-2 bg-muted rounded-full text-sm font-medium text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors cursor-default"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {tech}
