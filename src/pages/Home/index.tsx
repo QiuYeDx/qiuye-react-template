@@ -9,6 +9,7 @@ import {
   ShieldCheckIcon,
   SparklesIcon,
   ArrowRightIcon,
+  CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -79,6 +80,10 @@ const Home: React.FC = () => {
     });
   };
 
+  const handleViewGitHub = () => {
+    window.open("https://github.com/QiuYeDx/qiuye-react-template", "_blank");
+  };
+
   return (
     <div className="min-h-screen bg-background relative">
       {/* 背景装饰 */}
@@ -121,6 +126,16 @@ const Home: React.FC = () => {
               className="px-8 py-3 text-base font-medium rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer"
             >
               查看文档
+            </Button>
+
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={handleViewGitHub}
+              className="px-8 py-3 text-base font-medium rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer group"
+            >
+              <CodeBracketIcon className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+              GitHub
             </Button>
           </div>
         </animated.div>

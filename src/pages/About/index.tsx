@@ -282,6 +282,18 @@ const About: React.FC = () => {
                   <span className="text-muted-foreground">作者</span>
                   <span className="font-semibold text-foreground">QiuYeDx</span>
                 </div>
+                <Separator />
+                <div className="flex justify-between items-center py-2">
+                  <span className="text-muted-foreground">GitHub</span>
+                  <a
+                    href="https://github.com/QiuYeDx/qiuye-react-template"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-semibold text-primary hover:text-primary/80 transition-colors underline decoration-2 underline-offset-2 hover:decoration-primary/60"
+                  >
+                    查看源码
+                  </a>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -302,9 +314,21 @@ const About: React.FC = () => {
               也感谢每一位使用这个模板的开发者，你们的反馈让项目变得更好。
             </p>
 
-            <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-medium">
-              <HeartIcon className="w-5 h-5 mr-2" />
-              Made with Love
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-medium">
+                <HeartIcon className="w-5 h-5 mr-2" />
+                Made with Love
+              </div>
+              
+              <a
+                href="https://github.com/QiuYeDx/qiuye-react-template"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-border/50 hover:bg-border text-foreground rounded-full font-medium transition-all duration-300 hover:shadow-md group"
+              >
+                <CodeBracketIcon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                Star on GitHub
+              </a>
             </div>
           </div>
         </CardContent>

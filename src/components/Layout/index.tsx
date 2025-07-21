@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import {
@@ -36,6 +36,11 @@ const Layout: React.FC = () => {
   const location = useLocation();
   const { theme, setMode } = useThemeStore();
 
+  // 路由切换时滚动到页面顶部
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const toggleTheme = () => {
     setMode(theme.mode === "light" ? "dark" : "light");
   };
@@ -47,13 +52,18 @@ const Layout: React.FC = () => {
         <div className="flex items-center basis-1/4">
           {/* 窄屏显示图标 */}
           <div className="md:hidden">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <HomeIcon className="w-5 h-5 text-primary-foreground" />
-            </div>
+            <img
+              src="/qiuye-leaf-icon.svg"
+              alt="Qiuye Template"
+              className="w-11 h-11"
+            />
           </div>
-          {/* 宽屏显示完整文本 */}
-          <div className="hidden md:block text-xl font-bold text-foreground whitespace-nowrap">
-            Qiuye Template
+          {/* 宽屏显示图标+文字组合 */}
+          <div className="hidden md:flex items-center space-x-3">
+            <img src="/qiuye-leaf-icon.svg" alt="Qiuye" className="w-8 h-8" />
+            <div className="text-xl font-bold text-foreground whitespace-nowrap">
+              Qiuye Template
+            </div>
           </div>
         </div>
 
