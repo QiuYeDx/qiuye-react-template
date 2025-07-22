@@ -1,0 +1,45 @@
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 渐变定义 -->
+    <linearGradient id="leafPureGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f7931e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffcc02;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="leafPureGradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ea580c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 主要叶子形状 -->
+  <path d="M8 30 Q5 22 8 15 Q12 8 20 10 Q25 13 23 22 Q20 30 8 30 Z" 
+        fill="url(#leafPureGradient1)" 
+        opacity="0.9"/>
+
+  <!-- 第二片叶子 -->
+  <path d="M16 33 Q13 25 15 18 Q18 11 26 13 Q30 16 28 25 Q26 33 16 33 Z" 
+        fill="url(#leafPureGradient2)" 
+        opacity="0.8"/>
+
+  <!-- 叶子茎部 -->
+  <line x1="20" y1="18" x2="22" y2="25" 
+        stroke="#8b5cf6" 
+        stroke-width="2.5" 
+        stroke-linecap="round"/>
+
+  <!-- 叶脉 -->
+  <path d="M10 20 Q16 17 20 22" 
+        stroke="#ffffff" 
+        stroke-width="0.8" 
+        stroke-opacity="0.5" 
+        fill="none"/>
+  
+  <path d="M18 22 Q22 20 26 24" 
+        stroke="#ffffff" 
+        stroke-width="0.8" 
+        stroke-opacity="0.5" 
+        fill="none"/>
+</svg> 

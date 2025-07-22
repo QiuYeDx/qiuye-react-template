@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useSpring, animated, useTrail } from "@react-spring/web";
 import { toast } from "sonner";
 import {
@@ -12,12 +11,10 @@ import {
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const Home: React.FC = () => {
-  const { t } = useTranslation();
-
   // 主要内容动画
   const heroAnimation = useSpring({
     from: { opacity: 0, transform: "translateY(50px)" },
@@ -74,11 +71,11 @@ const Home: React.FC = () => {
     toast.success("🚀 欢迎开始使用 Qiuye React Template！");
   };
 
-  const handleViewDocs = () => {
-    toast("📚 文档功能正在开发中，敬请期待！", {
-      icon: "📖",
-    });
-  };
+  // const handleViewDocs = () => {
+  //   toast("📚 文档功能正在开发中，敬请期待！", {
+  //     icon: "📖",
+  //   });
+  // };
 
   const handleViewGitHub = () => {
     window.open("https://github.com/QiuYeDx/qiuye-react-template", "_blank");
@@ -119,14 +116,14 @@ const Home: React.FC = () => {
               <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
 
-            <Button
+            {/* <Button
               variant="secondary"
               size="lg"
               onClick={handleViewDocs}
               className="px-8 py-3 text-base font-medium rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer"
             >
               查看文档
-            </Button>
+            </Button> */}
 
             <Button
               variant="outline"

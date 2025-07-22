@@ -35,7 +35,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     // 监听系统主题变化（可选）
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const handleSystemThemeChange = (e: MediaQueryListEvent) => {
+    const handleSystemThemeChange = (_e: MediaQueryListEvent) => {
       // 只有在用户没有手动设置主题时才跟随系统
       // 这里我们总是保持用户的选择，不自动跟随系统变化
     };

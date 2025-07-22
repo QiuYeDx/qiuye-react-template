@@ -1,23 +1,16 @@
 import React, { useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import {
-  MoonIcon,
-  SunIcon,
-  GlobeAltIcon,
-  HomeIcon,
-} from "@heroicons/react/24/outline";
+import { MoonIcon, SunIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
+// Logo资源引入
+import QiuyeLeafIcon from "@/assets/images/logos/qiuye-leaf-icon.svg";
 import { useThemeStore } from "@/store/useThemeStore";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import {
   DropdownMenu,
@@ -53,14 +46,14 @@ const Layout: React.FC = () => {
           {/* 窄屏显示图标 */}
           <div className="md:hidden">
             <img
-              src="/qiuye-leaf-icon.svg"
+              src={QiuyeLeafIcon}
               alt="Qiuye Template"
               className="w-11 h-11"
             />
           </div>
           {/* 宽屏显示图标+文字组合 */}
           <div className="hidden md:flex items-center space-x-3">
-            <img src="/qiuye-leaf-icon.svg" alt="Qiuye" className="w-8 h-8" />
+            <img src={QiuyeLeafIcon} alt="Qiuye" className="w-8 h-8" />
             <div className="text-xl font-bold text-foreground whitespace-nowrap">
               Qiuye Template
             </div>

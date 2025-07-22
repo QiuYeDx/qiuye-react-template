@@ -4,25 +4,25 @@
 
 本项目包含了多个版本的 SVG logo 文件，用于不同的使用场景：
 
-### 1. 主 Logo (`/public/qiuye-logo.svg`)
+### 1. 主 Logo (`src/assets/images/logos/qiuye-logo.svg`)
 - **用途**: 适用于亮色背景的完整品牌 logo
 - **尺寸**: 200x60px (viewBox)
 - **包含**: 秋叶图标 + "Qiuye" 主标题 + "React Template" 副标题
 - **使用场景**: 
-  - 网站头部导航
   - 文档封面
   - 营销材料（亮色背景）
+  - 完整logo展示需求
 
-### 2. 深色版 Logo (`/public/qiuye-logo-dark.svg`)
+### 2. 深色版 Logo (`src/assets/images/logos/qiuye-logo-dark.svg`)
 - **用途**: 适用于深色背景的完整品牌 logo
 - **尺寸**: 200x60px (viewBox)
 - **特点**: 调整了颜色对比度，适合深色模式
 - **使用场景**:
-  - 深色模式的网站头部
   - 深色背景的设计材料
   - 夜间模式界面
+  - 深色主题完整logo展示
 
-### 3. 图标版本 (`/public/qiuye-icon.svg`)
+### 3. 图标版本 (`src/assets/images/logos/qiuye-icon.svg`)
 - **用途**: 独立的图标版本，带背景圆圈
 - **尺寸**: 64x64px (viewBox)
 - **包含**: 秋叶图标 + 圆形背景
@@ -31,19 +31,19 @@
   - 社交媒体头像
   - 小尺寸展示
 
-### 4. 纯图标版本 (`/public/qiuye-leaf-icon.svg`)
+### 4. 纯图标版本 (`src/assets/images/logos/qiuye-leaf-icon.svg`) **推荐**
 - **用途**: 纯净的秋叶图标，不含背景和文字
 - **尺寸**: 40x40px (viewBox)
-- **特点**: 专为与前端文字组合使用而设计
+- **特点**: 专为与前端文字组合使用而设计，是主要的导航logo方案
 - **使用场景**:
-  - 网站头部（与文字组合）
+  - 网站头部导航（与文字组合）
   - 独立图标使用
   - 灵活布局需求
 
-### 5. Favicon (`/public/favicon.svg`)
+### 5. Favicon (`public/favicon.svg`)
 - **用途**: 浏览器标签页图标
 - **尺寸**: 32x32px (viewBox)
-- **特点**: 简化版本，专为小尺寸优化
+- **特点**: 简化版本，专为小尺寸优化，保留在public目录以便HTML直接引用
 - **使用场景**:
   - 浏览器标签页
   - 书签图标
@@ -69,18 +69,24 @@
 ## 在代码中使用
 
 ### React 组件中使用
-```tsx
-// 完整 logo（根据主题自动切换）
-<img 
-  src={theme.mode === "dark" ? "/qiuye-logo-dark.svg" : "/qiuye-logo.svg"} 
-  alt="Qiuye React Template" 
-  className="h-8 w-auto" 
-/>
 
+首先导入所需的logo资源：
+
+```tsx
+// 导入logo资源
+import QiuyeLeafIcon from "@/assets/images/logos/qiuye-leaf-icon.svg";
+import QiuyeLogo from "@/assets/images/logos/qiuye-logo.svg";
+import QiuyeLogoDark from "@/assets/images/logos/qiuye-logo-dark.svg";
+import QiuyeIcon from "@/assets/images/logos/qiuye-icon.svg";
+```
+
+然后在组件中使用：
+
+```tsx
 // 图标+文字组合（推荐用于导航栏）
 <div className="flex items-center space-x-3">
   <img 
-    src="/qiuye-leaf-icon.svg" 
+    src={QiuyeLeafIcon} 
     alt="Qiuye" 
     className="w-8 h-8" 
   />
@@ -89,16 +95,23 @@
   </div>
 </div>
 
+// 完整 logo（根据主题自动切换）
+<img 
+  src={theme.mode === "dark" ? QiuyeLogoDark : QiuyeLogo} 
+  alt="Qiuye React Template" 
+  className="h-8 w-auto" 
+/>
+
 // 独立图标版本（带背景圆圈）
 <img 
-  src="/qiuye-icon.svg" 
+  src={QiuyeIcon} 
   alt="Qiuye" 
   className="w-8 h-8" 
 />
 
 // 纯图标版本（不带背景）
 <img 
-  src="/qiuye-leaf-icon.svg" 
+  src={QiuyeLeafIcon} 
   alt="Qiuye" 
   className="w-8 h-8" 
 />
@@ -106,24 +119,25 @@
 
 ### CSS 中使用
 ```css
+/* 在CSS中使用时，需要使用相对路径 */
 .logo {
-  background-image: url('/qiuye-logo.svg');
+  background-image: url('@/assets/images/logos/qiuye-leaf-icon.svg');
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-.logo-dark {
-  background-image: url('/qiuye-logo-dark.svg');
+/* 或者在CSS Modules中通过导入使用 */
+.logo-from-js {
+  background-image: var(--logo-url);
 }
 ```
 
 ### HTML 中使用
 ```html
-<!-- Favicon -->
+<!-- Favicon（保留在public目录） -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-<!-- Logo 图片 -->
-<img src="/qiuye-logo.svg" alt="Qiuye React Template" />
+<!-- 其他logo需要通过JS/React导入使用，不能直接在HTML中引用 -->
 ```
 
 ## 自定义说明
@@ -153,13 +167,23 @@ SVG 是矢量格式，可以无损缩放。通过修改 `viewBox` 属性可以�
 ## 文件清单
 
 ```
+src/assets/images/logos/
+├── qiuye-logo.svg           # 主 logo（亮色背景）
+├── qiuye-logo-dark.svg      # 深色版 logo  
+├── qiuye-icon.svg           # 图标版本（带背景圆圈）
+└── qiuye-leaf-icon.svg      # 纯图标版本（不带背景和文字）
+
 public/
-├── qiuye-logo.svg      # 主 logo（亮色背景）
-├── qiuye-logo-dark.svg # 深色版 logo
-├── qiuye-icon.svg      # 图标版本（带背景圆圈）
-├── qiuye-leaf-icon.svg # 纯图标版本（不带背景和文字）
-└── favicon.svg         # Favicon
+└── favicon.svg              # Favicon（保留在public目录）
 ```
+
+## 构建后的优化
+
+所有 `src/assets/` 中的资源在构建时会被 Vite 处理：
+
+- **文件名哈希**: 自动添加内容哈希用于缓存控制，如 `qiuye-leaf-icon.abc123.svg`
+- **文件优化**: SVG 文件会被压缩和优化
+- **按需加载**: 只有被导入的资源才会包含在最终的构建产物中
 
 ## 版权信息
 

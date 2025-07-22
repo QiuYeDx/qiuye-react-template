@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 import { useTrail, animated, useSpring } from "@react-spring/web";
 import {
   CodeBracketIcon,
@@ -14,8 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 const About: React.FC = () => {
-  const { t } = useTranslation();
-
   // 页面标题动画
   const titleAnimation = useSpring({
     from: { opacity: 0, transform: "translateY(30px)" },
@@ -319,7 +316,7 @@ const About: React.FC = () => {
                 <HeartIcon className="w-5 h-5 mr-2" />
                 Made with Love
               </div>
-              
+
               <a
                 href="https://github.com/QiuYeDx/qiuye-react-template"
                 target="_blank"

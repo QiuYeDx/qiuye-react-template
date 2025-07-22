@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { toast } from 'sonner'
 import { useUserStore } from '@/store/useUserStore'
 
