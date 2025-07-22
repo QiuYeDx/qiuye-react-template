@@ -8,9 +8,9 @@ import {
 } from "./types";
 
 // 主加载组件 - 全屏遮罩式
-export const LoadingComponent: React.FC<LoadingComponentProps> = ({
-  className,
-}) => {
+export const LoadingComponent: React.FC<
+  LoadingComponentProps & { text?: string }
+> = ({ className, text }) => {
   const { t } = useTranslation();
 
   // 淡入动画
@@ -57,7 +57,7 @@ export const LoadingComponent: React.FC<LoadingComponentProps> = ({
           }}
           className="text-sm text-muted-foreground font-medium"
         >
-          {t("common.loading")}
+          {text || t("common.loading")}
         </animated.div>
 
         {/* 进度指示器 */}

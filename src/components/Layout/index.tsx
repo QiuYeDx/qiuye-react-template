@@ -5,6 +5,8 @@ import { MoonIcon, SunIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 // Logo资源引入
 import QiuyeLeafIcon from "@/assets/images/logos/qiuye-leaf-icon.svg";
 import { useThemeStore } from "@/store/useThemeStore";
+import { useLoadingStore } from "@/store/useLoadingStore";
+import { LoadingComponent } from "@/components/Loading";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -28,6 +30,7 @@ const Layout: React.FC = () => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const { theme, setMode } = useThemeStore();
+  const { isLoading, config } = useLoadingStore();
 
   // 路由切换时滚动到页面顶部
   useEffect(() => {
@@ -41,13 +44,13 @@ const Layout: React.FC = () => {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <header className="glass sticky top-0 z-50 h-16 flex items-center justify-between px-4 md:px-6 border-b border-border/50 backdrop-blur-md">
+      <header className="sticky top-0 z-50 h-16 flex items-center justify-between px-4 md:px-6 border-b border-border/50 bg-background">
         <div className="flex items-center basis-1/4">
           {/* 窄屏显示图标 */}
           <div className="md:hidden">
             <img
               src={QiuyeLeafIcon}
-              alt="Qiuye Template"
+              alt="QiuYe Template"
               className="w-11 h-11"
             />
           </div>
@@ -55,7 +58,7 @@ const Layout: React.FC = () => {
           <div className="hidden md:flex items-center space-x-3">
             <img src={QiuyeLeafIcon} alt="Qiuye" className="w-8 h-8" />
             <div className="text-xl font-bold text-foreground whitespace-nowrap">
-              Qiuye Template
+              QiuYe Template
             </div>
           </div>
         </div>
@@ -170,7 +173,7 @@ const Layout: React.FC = () => {
       <footer className="bg-muted/30 border-t border-border text-center py-6">
         <div className="container">
           <p className="text-muted-foreground text-sm">
-            Qiuye React Template ©{new Date().getFullYear()} Created with ❤️ by{" "}
+            QiuYe React Template ©{new Date().getFullYear()} Created with ❤️ by{" "}
             <a
               href="https://github.com/QiuYeDx"
               target="_blank"
@@ -182,6 +185,11 @@ const Layout: React.FC = () => {
           </p>
         </div>
       </footer>
+
+      {/* 全局Loading组件 */}
+      {isLoading && (
+        <LoadingComponent className={config.className} text={config.text} />
+      )}
     </div>
   );
 };

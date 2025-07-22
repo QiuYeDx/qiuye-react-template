@@ -16,7 +16,7 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "loadingDebug": "Debug Center",
+    "loadingDebug": "Debug",
     "dashboard": "Dashboard",
     "settings": "Settings"
   },
@@ -68,13 +68,13 @@
         "description": "Using the latest and most stable tech stack to ensure long-term maintainability and high performance."
       },
       "messages": {
-        "getStarted": "🚀 Welcome to start using Qiuye React Template!",
+        "getStarted": "🚀 Welcome to start using QiuYe React Template!",
         "docsInDev": "📚 Documentation is under development, stay tuned!"
       }
     },
     "about": {
       "title": "About Us",
-      "subtitle": "Qiuye React Template is a modern React project scaffold, committed to providing developers with the best development experience and project architecture.",
+      "subtitle": "QiuYe React Template is a modern React project scaffold, committed to providing developers with the best development experience and project architecture.",
       "features": {
         "title": "Project Features",
         "items": {
@@ -145,21 +145,51 @@
     "loadingDebug": {
       "title": "Loading Effects Debug Center",
       "subtitle": "Test and debug various loading component effects and performance",
+      "autoTest": {
+        "message": "Auto testing..."
+      },
       "mainLoadingTest": {
         "title": "Main Loading Component Test",
         "durationLabel": "Loading Duration",
-        "testMainLoading": "Test Main Loading",
+        "testMainLoading": "Test Global Loading",
         "testSimpleLoading": "Test Simple Loading",
+        "testMessage": "Testing global loading...",
         "startAutoTest": "Start Auto Test",
         "stopAutoTest": "Stop Auto Test",
         "status": {
-          "mainLoading": "Main Loading",
+          "mainLoading": "Global Loading",
           "simpleLoading": "Simple Loading",
           "autoTest": "Auto Test",
           "showing": "Showing",
           "hidden": "Hidden",
           "running": "Running",
           "stopped": "Stopped"
+        }
+      },
+      "globalApi": {
+        "title": "Global Loading API",
+        "description": "Use global loading controller to trigger loading effects anywhere",
+        "asyncTest": {
+          "button": "Test Async Operation",
+          "message": "Async operation in progress..."
+        },
+        "delayedTest": {
+          "button": "Test Delayed Display",
+          "message": "Delayed loading display..."
+        },
+        "customText": {
+          "button": "Custom Text"
+        },
+        "hide": {
+          "button": "Manual Hide"
+        },
+        "examples": {
+          "title": "Code Examples",
+          "comments": {
+            "basicUsage": "// Basic usage",
+            "customText": "// Custom text",
+            "asyncWrapper": "// Async operation wrapper"
+          }
         }
       },
       "variants": {
@@ -173,7 +203,7 @@
       },
       "usage": {
         "title": "Usage Instructions",
-        "mainLoading": "Full-screen overlay loading, suitable for page-level loading scenarios",
+        "globalLoading": "Global singleton loading component, can be called anywhere via API",
         "simpleLoading": "Lightweight loading, suitable for component internal or local areas",
         "debugFeatures": "Adjustable duration, manual trigger, automatic cycle testing",
         "styleVariants": "Display different styles of loading animation effects",

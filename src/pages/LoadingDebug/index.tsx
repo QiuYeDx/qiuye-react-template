@@ -7,18 +7,26 @@ import {
   ArrowPathIcon,
   ClockIcon,
   SparklesIcon,
+  CommandLineIcon,
 } from "@heroicons/react/24/outline";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { LoadingComponent, SimpleLoadingComponent } from "@/components/Loading";
+import { SimpleLoadingComponent } from "@/components/Loading";
+import {
+  LoadingController,
+  showGlobalLoading,
+  hideGlobalLoading,
+  withGlobalLoading,
+  useLoadingStore,
+} from "@/store/useLoadingStore";
 
 const LoadingDebug: React.FC = () => {
   const { t } = useTranslation();
-  const [showMainLoading, setShowMainLoading] = useState(false);
   const [showSimpleLoading, setShowSimpleLoading] = useState(false);
   const [loadingDuration, setLoadingDuration] = useState([2000]);
   const [isAutoTesting, setIsAutoTesting] = useState(false);
+  const { isLoading: isGlobalLoading } = useLoadingStore();
 
   // 页面标题动画
   const titleAnimation = useSpring({
@@ -32,6 +40,7 @@ const LoadingDebug: React.FC = () => {
   const cardContainers = [
     "mainTest", // 主要测试卡片
     "variants", // 样式变体卡片
+    "globalApi", // 全局API使用卡片
     "preview", // 预览卡片
     "usage", // 使用说明卡片
   ];
@@ -56,22 +65,21 @@ const LoadingDebug: React.FC = () => {
   useEffect(() => {
     if (isAutoTesting) {
       const interval = setInterval(() => {
-        setShowMainLoading(true);
-        setTimeout(() => {
-          setShowMainLoading(false);
-        }, loadingDuration[0]);
+        showGlobalLoading({
+          text: t("pages.loadingDebug.autoTest.message"),
+          duration: loadingDuration[0],
+        });
       }, loadingDuration[0] + 1000);
 
       return () => clearInterval(interval);
     }
-  }, [isAutoTesting, loadingDuration]);
+  }, [isAutoTesting, loadingDuration, t]);
 
   // 手动触发主加载效果
   const triggerMainLoading = () => {
-    setShowMainLoading(true);
-    setTimeout(() => {
-      setShowMainLoading(false);
-    }, loadingDuration[0]);
+    LoadingController.showFor(loadingDuration[0], {
+      text: t("pages.loadingDebug.mainLoadingTest.testMessage"),
+    });
   };
 
   // 手动触发简单加载效果
@@ -80,6 +88,27 @@ const LoadingDebug: React.FC = () => {
     setTimeout(() => {
       setShowSimpleLoading(false);
     }, loadingDuration[0]);
+  };
+
+  // 测试异步操作
+  const testAsyncOperation = async () => {
+    try {
+      await withGlobalLoading(
+        () => new Promise((resolve) => setTimeout(resolve, loadingDuration[0])),
+        { text: t("pages.loadingDebug.globalApi.asyncTest.message") }
+      );
+      console.log("异步操作完成");
+    } catch (error) {
+      console.error("异步操作失败:", error);
+    }
+  };
+
+  // 测试延迟显示
+  const testDelayedLoading = () => {
+    LoadingController.showWithDelay(500, {
+      text: t("pages.loadingDebug.globalApi.delayedTest.message"),
+      duration: loadingDuration[0],
+    });
   };
 
   // 各种加载样式组件
@@ -199,17 +228,26 @@ const LoadingDebug: React.FC = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-3">
-                  <Button onClick={triggerMainLoading} variant="default">
+                  <Button
+                    className="cursor-pointer"
+                    onClick={triggerMainLoading}
+                    variant="default"
+                  >
                     <PlayIcon className="w-4 h-4 mr-2" />
                     {t("pages.loadingDebug.mainLoadingTest.testMainLoading")}
                   </Button>
 
-                  <Button onClick={triggerSimpleLoading} variant="secondary">
+                  <Button
+                    className="cursor-pointer"
+                    onClick={triggerSimpleLoading}
+                    variant="secondary"
+                  >
                     <PlayIcon className="w-4 h-4 mr-2" />
                     {t("pages.loadingDebug.mainLoadingTest.testSimpleLoading")}
                   </Button>
 
                   <Button
+                    className="cursor-pointer"
                     onClick={() => setIsAutoTesting(!isAutoTesting)}
                     variant={isAutoTesting ? "destructive" : "outline"}
                   >
@@ -230,9 +268,9 @@ const LoadingDebug: React.FC = () => {
 
               {/* 状态显示 */}
               <div className="flex flex-wrap gap-2">
-                <Badge variant={showMainLoading ? "default" : "secondary"}>
+                <Badge variant={isGlobalLoading ? "default" : "secondary"}>
                   {t("pages.loadingDebug.mainLoadingTest.status.mainLoading")}:{" "}
-                  {showMainLoading
+                  {isGlobalLoading
                     ? t("pages.loadingDebug.mainLoadingTest.status.showing")
                     : t("pages.loadingDebug.mainLoadingTest.status.hidden")}
                 </Badge>
@@ -286,7 +324,7 @@ const LoadingDebug: React.FC = () => {
 
       {/* 简单加载预览区域 */}
       {showSimpleLoading && (
-        <animated.div style={cardTrail[2]}>
+        <animated.div style={cardTrail[3]}>
           <Card className="mb-8">
             <CardHeader>
               <h3 className="text-lg font-semibold">
@@ -300,8 +338,120 @@ const LoadingDebug: React.FC = () => {
         </animated.div>
       )}
 
+      {/* 全局API使用示例 */}
+      <animated.div style={cardTrail[2]}>
+        <Card className="mb-8">
+          <CardHeader>
+            <h3 className="text-2xl font-bold flex items-center text-foreground">
+              <CommandLineIcon className="w-6 h-6 mr-2 text-primary" />
+              {t("pages.loadingDebug.globalApi.title")}
+            </h3>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              <p className="text-muted-foreground">
+                {t("pages.loadingDebug.globalApi.description")}
+              </p>
+
+              <div className="flex flex-wrap gap-3">
+                <Button
+                  onClick={testAsyncOperation}
+                  variant="default"
+                  className="cursor-pointer"
+                >
+                  <PlayIcon className="w-4 h-4 mr-2" />
+                  {t("pages.loadingDebug.globalApi.asyncTest.button")}
+                </Button>
+
+                <Button
+                  onClick={testDelayedLoading}
+                  variant="secondary"
+                  className="cursor-pointer"
+                >
+                  <ClockIcon className="w-4 h-4 mr-2" />
+                  {t("pages.loadingDebug.globalApi.delayedTest.button")}
+                </Button>
+
+                <Button
+                  className="cursor-pointer"
+                  onClick={() =>
+                    showGlobalLoading({
+                      text: "自定义文本加载中...",
+                      duration: loadingDuration[0],
+                    })
+                  }
+                  variant="outline"
+                >
+                  <SparklesIcon className="w-4 h-4 mr-2" />
+                  {t("pages.loadingDebug.globalApi.customText.button")}
+                </Button>
+
+                <Button
+                  onClick={hideGlobalLoading}
+                  variant="ghost"
+                  className="cursor-pointer"
+                >
+                  <PauseIcon className="w-4 h-4 mr-2" />
+                  {t("pages.loadingDebug.globalApi.hide.button")}
+                </Button>
+              </div>
+
+              <div className="mt-6 p-4 bg-muted/30 rounded-lg">
+                <h4 className="font-semibold mb-3">
+                  {t("pages.loadingDebug.globalApi.examples.title")}
+                </h4>
+                <div className="space-y-2 text-sm font-mono bg-background p-3 rounded">
+                  <div>
+                    <span className="text-primary">import</span>{" "}
+                    {"{ LoadingController }"}{" "}
+                    <span className="text-primary">from</span>{" "}
+                    <span className="text-green-600">
+                      '@/store/useLoadingStore'
+                    </span>
+                    ;
+                  </div>
+                  <div className="mt-2 text-muted-foreground">
+                    {t(
+                      "pages.loadingDebug.globalApi.examples.comments.basicUsage"
+                    )}
+                  </div>
+                  <div>
+                    LoadingController.
+                    <span className="text-blue-600">show</span>();
+                  </div>
+                  <div>
+                    LoadingController.
+                    <span className="text-blue-600">hide</span>();
+                  </div>
+                  <div className="mt-2 text-muted-foreground">
+                    {t(
+                      "pages.loadingDebug.globalApi.examples.comments.customText"
+                    )}
+                  </div>
+                  <div>
+                    LoadingController.
+                    <span className="text-blue-600">show</span>(
+                    {"{ text: '加载中...' }"});
+                  </div>
+                  <div className="mt-2 text-muted-foreground">
+                    {t(
+                      "pages.loadingDebug.globalApi.examples.comments.asyncWrapper"
+                    )}
+                  </div>
+                  <div>
+                    <span className="text-primary">await</span>{" "}
+                    LoadingController.
+                    <span className="text-blue-600">withLoading</span>(asyncFn);
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </animated.div>
+
       {/* 使用说明 */}
-      <animated.div style={cardTrail[3]}>
+      <animated.div style={cardTrail[4]}>
         <Card>
           <CardHeader>
             <h3 className="text-2xl font-bold text-foreground">
@@ -312,11 +462,8 @@ const LoadingDebug: React.FC = () => {
             <div className="prose prose-sm max-w-none dark:prose-invert">
               <ul className="space-y-2 text-muted-foreground">
                 <li>
-                  <strong>
-                    {t("pages.loadingDebug.mainLoadingTest.status.mainLoading")}
-                    :
-                  </strong>{" "}
-                  {t("pages.loadingDebug.usage.mainLoading")}
+                  <strong>{t("pages.loadingDebug.globalApi.title")}:</strong>{" "}
+                  {t("pages.loadingDebug.usage.globalLoading")}
                 </li>
                 <li>
                   <strong>
@@ -343,9 +490,6 @@ const LoadingDebug: React.FC = () => {
           </CardContent>
         </Card>
       </animated.div>
-
-      {/* 主加载组件覆盖层 */}
-      {showMainLoading && <LoadingComponent />}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-# Qiuye React Template - 快速开始指南
+# QiuYe React Template - 快速开始指南
 
 ## 🚀 一键启动
 
@@ -149,14 +149,17 @@ VITE_API_BASE_URL=你的API地址
 ## ❓ 常见问题
 
 ### Q: 如何添加新的依赖？
+
 A: 使用 `pnpm add <package-name>` 安装，TypeScript类型使用 `pnpm add -D @types/<package-name>`
 
 ### Q: 如何自定义Tailwind样式？
+
 A: 在 `tailwind.config.js` 中扩展配置，或在 `src/index.css` 中添加自定义样式
 
 ### Q: 如何部署项目？
+
 A: 运行 `pnpm build`，然后将 `dist` 目录部署到静态服务器
 
 ---
 
-🎉 现在你已经可以开始使用这个模板开发你的React项目了！ 
+🎉 现在你已经可以开始使用这个模板开发你的React项目了！

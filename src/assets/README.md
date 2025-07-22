@@ -34,7 +34,7 @@ function MyComponent() {
     <div>
       {/* 使用导入的图片 */}
       <img src={QiuyeLeafIcon} alt="Qiuye" className="w-8 h-8" />
-      <img src={QiuyeLogo} alt="Qiuye Logo" className="h-8 w-auto" />
+      <img src={QiuyeLogo} alt="QiuYe Logo" className="h-8 w-auto" />
     </div>
   );
 }

@@ -1,12 +1,13 @@
 # 故障排除指南
 
-本文档包含了在使用 Qiuye React Template 时可能遇到的常见问题和解决方案。
+本文档包含了在使用 QiuYe React Template 时可能遇到的常见问题和解决方案。
 
 ## 🔧 环境问题
 
 ### Node.js 版本不兼容
 
 **错误信息：**
+
 ```
 Your Node version is incompatible with "...".
 Expected version: >=20.19.4
@@ -51,6 +52,7 @@ nvm use  # 自动使用 .nvmrc 中指定的版本
 ### pnpm 版本问题
 
 **错误信息：**
+
 ```
 Unsupported environment (bad pnpm version)
 ```
@@ -68,6 +70,7 @@ pnpm --version
 ### 依赖版本兼容性
 
 **错误信息：**
+
 ```
 Your Node version is incompatible with "registry.npmjs.org/@typescript-eslint/eslint-plugin/7.18.0".
 Expected version: ^18.18.0 || >=20.0.0
@@ -86,11 +89,13 @@ Got: v18.17.0
 如果遇到类似错误，请确保：
 
 1. 删除已有的依赖：
+
    ```bash
    rm -rf node_modules pnpm-lock.yaml
    ```
 
 2. 重新安装：
+
    ```bash
    pnpm install
    ```
@@ -131,6 +136,7 @@ pnpm install
 ### 端口被占用
 
 **错误信息：**
+
 ```
 Port 3000 is already in use
 ```
@@ -179,9 +185,9 @@ pnpm dev
 
 ```css
 /* 确保 Ant Design 样式优先级 */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* 你的自定义样式 */
 ```
@@ -274,10 +280,10 @@ git commit -m "feat: 添加新功能"
 export default defineConfig({
   resolve: {
     alias: {
-      '@': resolve(__dirname, './src'),
+      "@": resolve(__dirname, "./src"),
     },
   },
-})
+});
 ```
 
 ## 🆘 获取帮助
@@ -285,12 +291,14 @@ export default defineConfig({
 如果以上解决方案都无法解决您的问题，请：
 
 1. 运行诊断脚本：
+
    ```bash
    ./scripts/check-env.sh
    ./scripts/verify-install.sh
    ```
 
 2. 查看详细错误信息：
+
    ```bash
    pnpm install --verbose
    ```
@@ -303,4 +311,4 @@ export default defineConfig({
 
 ---
 
-💡 **提示：** 大部分问题都可以通过运行 `./scripts/setup.sh` 脚本来自动解决。 
+💡 **提示：** 大部分问题都可以通过运行 `./scripts/setup.sh` 脚本来自动解决。

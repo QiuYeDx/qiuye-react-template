@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Qiuye React Template 快速设置脚本
+# QiuYe React Template 快速设置脚本
 
-echo "🚀 开始设置 Qiuye React Template..."
+echo "🚀 开始设置 QiuYe React Template..."
 
 # 检查 Node.js
 if ! command -v node &> /dev/null; then
@@ -73,7 +73,7 @@ if [ ! -f .env ]; then
     echo "⚙️ 创建环境变量文件..."
     cat > .env << EOF
 # 应用配置
-VITE_APP_TITLE=Qiuye React Template
+VITE_APP_TITLE=QiuYe React Template
 VITE_APP_DESCRIPTION=A modern React template with TypeScript and Vite
 
 # API配置

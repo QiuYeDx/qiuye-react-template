@@ -317,7 +317,8 @@ const About: React.FC = () => {
                       {t("pages.about.projectInfo.lastUpdate")}
                     </span>
                     <span className="font-semibold text-foreground">
-                      {new Date().toLocaleDateString()}
+                      {/* TODO: 记得更新时间 */}
+                      2025/7/22
                     </span>
                   </div>
                   <Separator />

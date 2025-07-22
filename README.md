@@ -1,4 +1,4 @@
-# Qiuye React Template
+# QiuYe React Template
 
 一个现代化的React项目脚手架，基于React 18 + TypeScript + Vite构建，集成了常用的开发工具和最佳实践。
 
@@ -119,7 +119,7 @@ src/
 
 ```env
 # 应用配置
-VITE_APP_TITLE=Qiuye React Template
+VITE_APP_TITLE=QiuYe React Template
 VITE_APP_DESCRIPTION=A modern React template
 
 # API配置
@@ -178,7 +178,7 @@ import { useThemeStore } from '@/store/useThemeStore'
 
 function MyComponent() {
   const { theme, setMode } = useThemeStore()
-  
+
   const toggleTheme = () => {
     setMode(theme.mode === 'light' ? 'dark' : 'light')
   }
@@ -197,34 +197,30 @@ function MyComponent() {
 function Card() {
   return (
     <div className="bg-background text-foreground border border-border rounded-lg p-4">
-      <h2 className="text-lg font-bold text-foreground">
-        卡片标题
-      </h2>
-      <p className="text-muted-foreground">
-        这个卡片在明暗模式下都很好看
-      </p>
+      <h2 className="text-lg font-bold text-foreground">卡片标题</h2>
+      <p className="text-muted-foreground">这个卡片在明暗模式下都很好看</p>
     </div>
-  )
+  );
 }
 ```
 
 #### 条件渲染基于主题
 
 ```tsx
-import { useThemeStore } from '@/store/useThemeStore'
+import { useThemeStore } from "@/store/useThemeStore";
 
 function ThemedIcon() {
-  const { theme } = useThemeStore()
-  
+  const { theme } = useThemeStore();
+
   return (
     <div>
-      {theme.mode === 'dark' ? (
+      {theme.mode === "dark" ? (
         <MoonIcon className="w-6 h-6" />
       ) : (
         <SunIcon className="w-6 h-6" />
       )}
     </div>
-  )
+  );
 }
 ```
 
@@ -239,19 +235,19 @@ function ThemedIcon() {
 使用Zustand进行状态管理：
 
 ```typescript
-import { create } from 'zustand'
+import { create } from "zustand";
 
 interface CounterState {
-  count: number
-  increment: () => void
-  decrement: () => void
+  count: number;
+  increment: () => void;
+  decrement: () => void;
 }
 
 export const useCounterStore = create<CounterState>((set) => ({
   count: 0,
   increment: () => set((state) => ({ count: state.count + 1 })),
   decrement: () => set((state) => ({ count: state.count - 1 })),
-}))
+}));
 ```
 
 ### HTTP请求
@@ -259,13 +255,13 @@ export const useCounterStore = create<CounterState>((set) => ({
 使用封装的request工具：
 
 ```typescript
-import request from '@/utils/request'
+import request from "@/utils/request";
 
 // GET请求
-const data = await request.get('/users')
+const data = await request.get("/users");
 
 // POST请求
-const result = await request.post('/users', { name: 'John' })
+const result = await request.post("/users", { name: "John" });
 ```
 
 ### 添加新依赖
@@ -315,11 +311,11 @@ pnpm add -D @types/<package-name>
 ### 自定义组件样式
 
 ```tsx
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
 function CustomButton({ className, ...props }) {
   return (
-    <button 
+    <button
       className={cn(
         "bg-primary text-primary-foreground hover:bg-primary/90",
         "rounded-md px-4 py-2 transition-colors",
@@ -327,7 +323,7 @@ function CustomButton({ className, ...props }) {
       )}
       {...props}
     />
-  )
+  );
 }
 ```
 
@@ -391,21 +387,22 @@ pnpm build
 
 ```tsx
 function Logo() {
-  const { theme } = useThemeStore()
-  
+  const { theme } = useThemeStore();
+
   return (
-    <img 
-      src={theme.mode === 'dark' ? '/logo-dark.png' : '/logo-light.png'}
-      alt="Logo" 
+    <img
+      src={theme.mode === "dark" ? "/logo-dark.png" : "/logo-light.png"}
+      alt="Logo"
       className="h-8 w-auto"
     />
-  )
+  );
 }
 ```
 
 ### 3. 测试明暗模式兼容性
 
 确保在两种模式下都测试你的组件：
+
 - 文本对比度是否足够
 - 边框和分隔线是否清晰可见
 - 交互状态（hover、focus）是否正常
