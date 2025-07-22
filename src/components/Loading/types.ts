@@ -1,4 +1,4 @@
-export type LoadingSize = 'sm' | 'md' | 'lg';
+export type LoadingSize = "sm" | "md" | "lg";
 
 export interface LoadingComponentProps {
   className?: string;
@@ -17,10 +17,10 @@ export interface LoadingWithTextProps {
 
 // 加载状态枚举
 export enum LoadingState {
-  IDLE = 'idle',
-  LOADING = 'loading',
-  SUCCESS = 'success',
-  ERROR = 'error',
+  IDLE = "idle",
+  LOADING = "loading",
+  SUCCESS = "success",
+  ERROR = "error",
 }
 
 // 加载配置类型
@@ -30,4 +30,4 @@ export interface LoadingConfig {
   size?: LoadingSize;
   delay?: number;
   duration?: number;
-} 
+}

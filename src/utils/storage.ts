@@ -7,9 +7,9 @@ class Storage {
    */
   static setLocal(key: string, value: any): void {
     try {
-      localStorage.setItem(key, JSON.stringify(value))
+      localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
-      console.error('localStorage设置失败:', error)
+      console.error("localStorage设置失败:", error);
     }
   }
 
@@ -18,11 +18,11 @@ class Storage {
    */
   static getLocal<T>(key: string): T | null {
     try {
-      const item = localStorage.getItem(key)
-      return item ? JSON.parse(item) : null
+      const item = localStorage.getItem(key);
+      return item ? JSON.parse(item) : null;
     } catch (error) {
-      console.error('localStorage获取失败:', error)
-      return null
+      console.error("localStorage获取失败:", error);
+      return null;
     }
   }
 
@@ -31,9 +31,9 @@ class Storage {
    */
   static removeLocal(key: string): void {
     try {
-      localStorage.removeItem(key)
+      localStorage.removeItem(key);
     } catch (error) {
-      console.error('localStorage删除失败:', error)
+      console.error("localStorage删除失败:", error);
     }
   }
 
@@ -42,9 +42,9 @@ class Storage {
    */
   static clearLocal(): void {
     try {
-      localStorage.clear()
+      localStorage.clear();
     } catch (error) {
-      console.error('localStorage清空失败:', error)
+      console.error("localStorage清空失败:", error);
     }
   }
 
@@ -53,9 +53,9 @@ class Storage {
    */
   static setSession(key: string, value: any): void {
     try {
-      sessionStorage.setItem(key, JSON.stringify(value))
+      sessionStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
-      console.error('sessionStorage设置失败:', error)
+      console.error("sessionStorage设置失败:", error);
     }
   }
 
@@ -64,11 +64,11 @@ class Storage {
    */
   static getSession<T>(key: string): T | null {
     try {
-      const item = sessionStorage.getItem(key)
-      return item ? JSON.parse(item) : null
+      const item = sessionStorage.getItem(key);
+      return item ? JSON.parse(item) : null;
     } catch (error) {
-      console.error('sessionStorage获取失败:', error)
-      return null
+      console.error("sessionStorage获取失败:", error);
+      return null;
     }
   }
 
@@ -77,9 +77,9 @@ class Storage {
    */
   static removeSession(key: string): void {
     try {
-      sessionStorage.removeItem(key)
+      sessionStorage.removeItem(key);
     } catch (error) {
-      console.error('sessionStorage删除失败:', error)
+      console.error("sessionStorage删除失败:", error);
     }
   }
 
@@ -88,11 +88,11 @@ class Storage {
    */
   static clearSession(): void {
     try {
-      sessionStorage.clear()
+      sessionStorage.clear();
     } catch (error) {
-      console.error('sessionStorage清空失败:', error)
+      console.error("sessionStorage清空失败:", error);
     }
   }
 }
 
-export default Storage 
+export default Storage;

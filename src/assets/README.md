@@ -44,7 +44,7 @@ function MyComponent() {
 
 ```css
 .my-component {
-  background-image: url('@/assets/images/logos/qiuye-leaf-icon.svg');
+  background-image: url("@/assets/images/logos/qiuye-leaf-icon.svg");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -52,13 +52,13 @@ function MyComponent() {
 
 ## 与 public 目录的区别
 
-| 特性 | `src/assets/` | `public/` |
-|------|---------------|-----------|
-| 构建处理 | ✅ 会被 Vite 处理和优化 | ❌ 原样复制到输出目录 |
-| 缓存控制 | ✅ 自动添加 hash 用于缓存控制 | ❌ 需要手动管理缓存 |
-| 文件大小优化 | ✅ 会被压缩和优化 | ❌ 保持原始大小 |
-| 导入方式 | 需要 import 导入 | 直接通过 URL 访问 |
-| 使用场景 | 组件中使用的图片、图标等 | favicon、robots.txt 等需要固定路径的文件 |
+| 特性         | `src/assets/`                 | `public/`                                |
+| ------------ | ----------------------------- | ---------------------------------------- |
+| 构建处理     | ✅ 会被 Vite 处理和优化       | ❌ 原样复制到输出目录                    |
+| 缓存控制     | ✅ 自动添加 hash 用于缓存控制 | ❌ 需要手动管理缓存                      |
+| 文件大小优化 | ✅ 会被压缩和优化             | ❌ 保持原始大小                          |
+| 导入方式     | 需要 import 导入              | 直接通过 URL 访问                        |
+| 使用场景     | 组件中使用的图片、图标等      | favicon、robots.txt 等需要固定路径的文件 |
 
 ## 最佳实践
 
@@ -70,6 +70,7 @@ function MyComponent() {
 ## 资源类型支持
 
 Vite 默认支持以下资源类型：
+
 - 图片: `.png`, `.jpg`, `.jpeg`, `.gif`, `.svg`, `.webp`
 - 字体: `.woff`, `.woff2`, `.eot`, `.ttf`, `.otf`
 - 音频: `.mp3`, `.wav`, `.ogg`
@@ -79,4 +80,4 @@ Vite 默认支持以下资源类型：
 
 - SVG 文件可以作为 URL 导入，也可以作为 React 组件导入（需要配置）
 - 大文件会自动转换为 URL，小文件会被内联为 base64
-- 资源文件的路径在构建后会包含 hash，不要依赖固定的文件名 
+- 资源文件的路径在构建后会包含 hash，不要依赖固定的文件名

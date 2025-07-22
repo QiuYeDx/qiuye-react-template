@@ -1,12 +1,18 @@
 import React from "react";
 import { useSpring, animated } from "@react-spring/web";
 import { useTranslation } from "react-i18next";
-import { LoadingComponentProps, InlineLoadingProps, LoadingWithTextProps } from "./types";
+import {
+  LoadingComponentProps,
+  InlineLoadingProps,
+  LoadingWithTextProps,
+} from "./types";
 
 // 主加载组件 - 全屏遮罩式
-export const LoadingComponent: React.FC<LoadingComponentProps> = ({ className }) => {
+export const LoadingComponent: React.FC<LoadingComponentProps> = ({
+  className,
+}) => {
   const { t } = useTranslation();
-  
+
   // 淡入动画
   const fadeIn = useSpring({
     from: { opacity: 0, transform: "scale(0.8)" },
@@ -24,9 +30,9 @@ export const LoadingComponent: React.FC<LoadingComponentProps> = ({ className })
   });
 
   return (
-    <animated.div 
+    <animated.div
       style={fadeIn}
-      className={`opacity-0 fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex justify-center items-center ${className || ''}`}
+      className={`opacity-0 fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex justify-center items-center ${className || ""}`}
     >
       <div className="flex flex-col items-center space-y-4">
         {/* 主加载动画 */}
@@ -44,7 +50,7 @@ export const LoadingComponent: React.FC<LoadingComponentProps> = ({ className })
         </animated.div>
 
         {/* 加载文字 */}
-        <animated.div 
+        <animated.div
           style={{
             ...pulse,
             opacity: pulse.opacity.to((o) => o * 0.7),
@@ -64,7 +70,9 @@ export const LoadingComponent: React.FC<LoadingComponentProps> = ({ className })
 };
 
 // 简化版加载组件 - 轻量级
-export const SimpleLoadingComponent: React.FC<LoadingComponentProps> = ({ className }) => {
+export const SimpleLoadingComponent: React.FC<LoadingComponentProps> = ({
+  className,
+}) => {
   const fadeIn = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -72,9 +80,9 @@ export const SimpleLoadingComponent: React.FC<LoadingComponentProps> = ({ classN
   });
 
   return (
-    <animated.div 
+    <animated.div
       style={fadeIn}
-      className={`flex justify-center items-center h-32 ${className || ''}`}
+      className={`flex justify-center items-center h-32 ${className || ""}`}
     >
       <div className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin"></div>
     </animated.div>
@@ -82,31 +90,31 @@ export const SimpleLoadingComponent: React.FC<LoadingComponentProps> = ({ classN
 };
 
 // 内联小型加载组件 - 用于按钮等小空间
-export const InlineLoadingComponent: React.FC<InlineLoadingProps> = ({ 
-  size = 'md',
-  className 
+export const InlineLoadingComponent: React.FC<InlineLoadingProps> = ({
+  size = "md",
+  className,
 }) => {
   const sizeClasses = {
-    sm: 'w-3 h-3 border',
-    md: 'w-4 h-4 border-2',
-    lg: 'w-5 h-5 border-2'
+    sm: "w-3 h-3 border",
+    md: "w-4 h-4 border-2",
+    lg: "w-5 h-5 border-2",
   };
 
   return (
-    <div 
-      className={`${sizeClasses[size]} border-primary/30 border-t-primary rounded-full animate-spin ${className || ''}`}
+    <div
+      className={`${sizeClasses[size]} border-primary/30 border-t-primary rounded-full animate-spin ${className || ""}`}
     />
   );
 };
 
 // 带文字的加载组件
-export const LoadingWithText: React.FC<LoadingWithTextProps> = ({ 
-  text, 
-  size = 'md',
-  className
+export const LoadingWithText: React.FC<LoadingWithTextProps> = ({
+  text,
+  size = "md",
+  className,
 }) => {
   const { t } = useTranslation();
-  
+
   const fadeIn = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
@@ -114,17 +122,17 @@ export const LoadingWithText: React.FC<LoadingWithTextProps> = ({
   });
 
   const sizeClasses = {
-    sm: 'w-4 h-4 border text-sm',
-    md: 'w-5 h-5 border-2 text-base',
-    lg: 'w-6 h-6 border-2 text-lg'
+    sm: "w-4 h-4 border text-sm",
+    md: "w-5 h-5 border-2 text-base",
+    lg: "w-6 h-6 border-2 text-lg",
   };
 
   return (
-    <animated.div 
+    <animated.div
       style={fadeIn}
-      className={`flex flex-col items-center space-y-2 ${className || ''}`}
+      className={`flex flex-col items-center space-y-2 ${className || ""}`}
     >
-      <div 
+      <div
         className={`${sizeClasses[size]} border-primary/30 border-t-primary rounded-full animate-spin`}
       />
       <div className="text-muted-foreground font-medium">
@@ -135,4 +143,4 @@ export const LoadingWithText: React.FC<LoadingWithTextProps> = ({
 };
 
 // 默认导出主加载组件
-export default LoadingComponent; 
+export default LoadingComponent;

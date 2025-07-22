@@ -19,6 +19,7 @@ import { LoadingComponent } from '@/components/Loading';
 ```
 
 **特性：**
+
 - 全屏毛玻璃遮罩效果
 - 优雅的动画过渡
 - 多层加载动画（旋转环 + 脉冲点）
@@ -37,6 +38,7 @@ import { SimpleLoadingComponent } from '@/components/Loading';
 ```
 
 **特性：**
+
 - 轻量级设计
 - 快速淡入动画
 - 适合局部区域使用
@@ -61,6 +63,7 @@ import { InlineLoadingComponent } from '@/components/Loading';
 ```
 
 **Props：**
+
 - `size?: 'sm' | 'md' | 'lg'` - 尺寸选择
 - `className?: string` - 自定义样式
 
@@ -77,6 +80,7 @@ import { LoadingWithText } from '@/components/Loading';
 ```
 
 **Props：**
+
 - `text?: string` - 自定义文本（默认使用国际化）
 - `size?: 'sm' | 'md' | 'lg'` - 尺寸选择
 - `className?: string` - 自定义样式
@@ -84,6 +88,7 @@ import { LoadingWithText } from '@/components/Loading';
 ## 使用场景
 
 ### 页面级加载
+
 ```tsx
 // 在路由 Suspense 中使用
 <Suspense fallback={<LoadingComponent />}>
@@ -92,25 +97,26 @@ import { LoadingWithText } from '@/components/Loading';
 ```
 
 ### 组件内部加载
+
 ```tsx
 // 在数据加载时显示
-{isLoading ? (
-  <SimpleLoadingComponent />
-) : (
-  <DataComponent data={data} />
-)}
+{
+  isLoading ? <SimpleLoadingComponent /> : <DataComponent data={data} />;
+}
 ```
 
 ### 按钮加载状态
+
 ```tsx
 // 提交按钮加载
 <button disabled={isSubmitting}>
   {isSubmitting && <InlineLoadingComponent size="sm" className="mr-2" />}
-  {isSubmitting ? '提交中...' : '提交'}
+  {isSubmitting ? "提交中..." : "提交"}
 </button>
 ```
 
 ### 局部区域加载
+
 ```tsx
 // 卡片内容加载
 <Card>
@@ -127,7 +133,7 @@ import { LoadingWithText } from '@/components/Loading';
 ## 类型定义
 
 ```tsx
-export type LoadingSize = 'sm' | 'md' | 'lg';
+export type LoadingSize = "sm" | "md" | "lg";
 
 export interface LoadingComponentProps {
   className?: string;
@@ -168,4 +174,4 @@ export interface LoadingWithTextProps {
 
 - 使用 React Spring 实现流畅动画
 - 支持懒加载和代码分割
-- 轻量级实现，最小化包体积 
+- 轻量级实现，最小化包体积

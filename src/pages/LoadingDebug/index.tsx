@@ -9,7 +9,7 @@ import {
   SparklesIcon,
 } from "@heroicons/react/24/outline";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Button, ButtonProps } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { LoadingComponent, SimpleLoadingComponent } from "@/components/Loading";
 
