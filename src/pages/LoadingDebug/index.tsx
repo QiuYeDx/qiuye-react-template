@@ -20,6 +20,7 @@ import {
   withGlobalLoading,
   useLoadingStore,
 } from "@/store/useLoadingStore";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const LoadingDebug: React.FC = () => {
   const { t } = useTranslation();
@@ -400,50 +401,55 @@ const LoadingDebug: React.FC = () => {
                 <h4 className="font-semibold mb-3">
                   {t("pages.loadingDebug.globalApi.examples.title")}
                 </h4>
-                <div className="space-y-2 text-sm font-mono bg-background p-3 rounded text-nowrap overflow-x-auto">
-                  <div>
-                    <span className="text-primary">import</span>{" "}
-                    {"{ LoadingController }"}{" "}
-                    <span className="text-primary">from</span>{" "}
-                    <span className="text-green-600">
-                      '@/store/useLoadingStore'
-                    </span>
-                    ;
+                <ScrollArea>
+                  {/* TODO: 项目有必要的话可以换为开源的代码块显示组件, 比如 react-textarea-code-editor */}
+                  <div className="space-y-2 text-sm font-mono bg-background p-3 rounded text-nowrap overflow-x-auto">
+                    <div>
+                      <span className="text-primary">import</span>{" "}
+                      {"{ LoadingController }"}{" "}
+                      <span className="text-primary">from</span>{" "}
+                      <span className="text-green-600">
+                        '@/store/useLoadingStore'
+                      </span>
+                      ;
+                    </div>
+                    <div className="mt-2 text-muted-foreground">
+                      {t(
+                        "pages.loadingDebug.globalApi.examples.comments.basicUsage"
+                      )}
+                    </div>
+                    <div>
+                      LoadingController.
+                      <span className="text-blue-600">show</span>();
+                    </div>
+                    <div>
+                      LoadingController.
+                      <span className="text-blue-600">hide</span>();
+                    </div>
+                    <div className="mt-2 text-muted-foreground">
+                      {t(
+                        "pages.loadingDebug.globalApi.examples.comments.customText"
+                      )}
+                    </div>
+                    <div>
+                      LoadingController.
+                      <span className="text-blue-600">show</span>(
+                      {"{ text: '加载中...' }"});
+                    </div>
+                    <div className="mt-2 text-muted-foreground">
+                      {t(
+                        "pages.loadingDebug.globalApi.examples.comments.asyncWrapper"
+                      )}
+                    </div>
+                    <div>
+                      <span className="text-primary">await</span>{" "}
+                      LoadingController.
+                      <span className="text-blue-600">withLoading</span>
+                      (asyncFn);
+                    </div>
                   </div>
-                  <div className="mt-2 text-muted-foreground">
-                    {t(
-                      "pages.loadingDebug.globalApi.examples.comments.basicUsage"
-                    )}
-                  </div>
-                  <div>
-                    LoadingController.
-                    <span className="text-blue-600">show</span>();
-                  </div>
-                  <div>
-                    LoadingController.
-                    <span className="text-blue-600">hide</span>();
-                  </div>
-                  <div className="mt-2 text-muted-foreground">
-                    {t(
-                      "pages.loadingDebug.globalApi.examples.comments.customText"
-                    )}
-                  </div>
-                  <div>
-                    LoadingController.
-                    <span className="text-blue-600">show</span>(
-                    {"{ text: '加载中...' }"});
-                  </div>
-                  <div className="mt-2 text-muted-foreground">
-                    {t(
-                      "pages.loadingDebug.globalApi.examples.comments.asyncWrapper"
-                    )}
-                  </div>
-                  <div>
-                    <span className="text-primary">await</span>{" "}
-                    LoadingController.
-                    <span className="text-blue-600">withLoading</span>(asyncFn);
-                  </div>
-                </div>
+                  <ScrollBar orientation="horizontal" />
+                </ScrollArea>
               </div>
             </div>
           </CardContent>
