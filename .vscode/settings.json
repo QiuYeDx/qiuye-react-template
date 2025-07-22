@@ -13,13 +13,11 @@
 
   // 保存时自动修复
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never",
     "source.removeUnusedImports": true
   },
 
   // 自动格式化配置
-  "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
   // TypeScript/JavaScript文件使用ESLint格式化

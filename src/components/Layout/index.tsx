@@ -17,8 +17,9 @@ import {
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
 } from "@/components/ui/dropdown-menu";
 import {
   Tooltip,
@@ -151,12 +152,17 @@ const Layout: React.FC = () => {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => i18n.changeLanguage("zh-CN")}>
-                {t("language.chinese")}
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => i18n.changeLanguage("en-US")}>
-                {t("language.english")}
-              </DropdownMenuItem>
+              <DropdownMenuRadioGroup
+                value={i18n.language}
+                onValueChange={(value) => i18n.changeLanguage(value)}
+              >
+                <DropdownMenuRadioItem value="zh-CN">
+                  {t("language.chinese")}
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="en-US">
+                  {t("language.english")}
+                </DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

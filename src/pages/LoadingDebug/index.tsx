@@ -400,7 +400,7 @@ const LoadingDebug: React.FC = () => {
                 <h4 className="font-semibold mb-3">
                   {t("pages.loadingDebug.globalApi.examples.title")}
                 </h4>
-                <div className="space-y-2 text-sm font-mono bg-background p-3 rounded">
+                <div className="space-y-2 text-sm font-mono bg-background p-3 rounded text-nowrap overflow-x-auto">
                   <div>
                     <span className="text-primary">import</span>{" "}
                     {"{ LoadingController }"}{" "}
