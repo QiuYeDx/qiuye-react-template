@@ -19,14 +19,122 @@
     "dashboard": "Dashboard",
     "settings": "Settings"
   },
+  "theme": {
+    "switchToDark": "Switch to dark mode",
+    "switchToLight": "Switch to light mode",
+    "languageSelect": "Language selection"
+  },
+  "language": {
+    "chinese": "中文",
+    "english": "English"
+  },
   "pages": {
     "home": {
-      "title": "Welcome to Qiuye React Template",
-      "description": "A modern frontend template based on React + TypeScript + Vite"
+      "badge": "Latest Tailwind CSS v4 Support",
+      "title": "Modern React Template",
+      "subtitle": "A modern project scaffold built with React 18 + TypeScript + Vite + Tailwind CSS v4, integrating best practices to let you focus on business development.",
+      "getStarted": "Get Started",
+      "viewDocs": "View Docs",
+      "github": "GitHub",
+      "features": {
+        "title": "✨ Core Features",
+        "subtitle": "We carefully selected and integrated the best tools and practices",
+        "items": {
+          "fast": {
+            "title": "⚡ Lightning Fast",
+            "description": "Modern build experience based on Vite and Tailwind CSS v4",
+            "badge": "v4"
+          },
+          "complete": {
+            "title": "🔧 Complete Setup",
+            "description": "TypeScript, ESLint, i18n and more out of the box",
+            "badge": "Ready"
+          },
+          "outOfBox": {
+            "title": "💝 Out of the Box",
+            "description": "Integrated best practices and common component libraries",
+            "badge": "Best"
+          },
+          "typeSafe": {
+            "title": "🛡️ Type Safe",
+            "description": "Complete TypeScript type definitions and checking",
+            "badge": "Safe"
+          }
+        }
+      },
+      "techStack": {
+        "title": "🛠️ Tech Stack",
+        "description": "Using the latest and most stable tech stack to ensure long-term maintainability and high performance."
+      },
+      "messages": {
+        "getStarted": "🚀 Welcome to start using Qiuye React Template!",
+        "docsInDev": "📚 Documentation is under development, stay tuned!"
+      }
     },
     "about": {
       "title": "About Us",
-      "description": "Learn more about this project"
+      "subtitle": "Qiuye React Template is a modern React project scaffold, committed to providing developers with the best development experience and project architecture.",
+      "features": {
+        "title": "Project Features",
+        "items": {
+          "modern": {
+            "title": "Modern Architecture",
+            "description": "Built with the latest React 18 and TypeScript, embracing modern development patterns"
+          },
+          "elegant": {
+            "title": "Elegant UI",
+            "description": "Beautiful interface and component system crafted with Shadcn/ui + Tailwind CSS v4"
+          },
+          "dx": {
+            "title": "Developer Experience",
+            "description": "Vite lightning build, TypeScript type safety, ESLint code standards"
+          },
+          "outOfBox": {
+            "title": "Out of the Box",
+            "description": "Pre-configured routing, state management, i18n, theme switching and other common features"
+          }
+        }
+      },
+      "timeline": {
+        "title": "Development Timeline",
+        "items": {
+          "init": {
+            "title": "Project Initialization",
+            "description": "Create basic project structure and configuration"
+          },
+          "core": {
+            "title": "Core Feature Integration",
+            "description": "Routing, state management, internationalization, etc."
+          },
+          "tailwind": {
+            "title": "Tailwind CSS v4 Upgrade",
+            "description": "Adopt the latest version of Tailwind CSS"
+          },
+          "optimize": {
+            "title": "Continuous Optimization",
+            "description": "Performance optimization and developer experience enhancement"
+          }
+        }
+      },
+      "techStack": {
+        "title": "Tech Stack",
+        "description": "We carefully selected the best tools and libraries to ensure the project's modernization, maintainability and development efficiency."
+      },
+      "projectInfo": {
+        "title": "Project Information",
+        "version": "Version",
+        "lastUpdate": "Last Update",
+        "license": "License",
+        "author": "Author",
+        "github": "GitHub",
+        "viewSource": "View Source"
+      },
+      "thanks": {
+        "title": "Thanks",
+        "content": "Thanks to all the contributors of open source projects, without your efforts there would be no such wonderful development ecosystem. Also thanks to every developer who uses this template, your feedback makes the project better.",
+        "madeWithLove": "Made with Love",
+        "starOnGitHub": "Star on GitHub"
+      }
     },
     "notFound": {
       "title": "Page Not Found",

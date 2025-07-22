@@ -19,14 +19,122 @@
     "dashboard": "仪表盘",
     "settings": "设置"
   },
+  "theme": {
+    "switchToDark": "切换到暗色模式",
+    "switchToLight": "切换到亮色模式",
+    "languageSelect": "语言选择"
+  },
+  "language": {
+    "chinese": "中文",
+    "english": "English"
+  },
   "pages": {
     "home": {
-      "title": "欢迎使用 Qiuye React 模板",
-      "description": "这是一个基于 React + TypeScript + Vite 的现代化前端模板"
+      "badge": "全新 Tailwind CSS v4 支持",
+      "title": "现代化 React 模板",
+      "subtitle": "基于 React 18 + TypeScript + Vite + Tailwind CSS v4 构建的现代化项目脚手架，集成最佳实践，让你专注于业务开发。",
+      "getStarted": "开始使用",
+      "viewDocs": "查看文档",
+      "github": "GitHub",
+      "features": {
+        "title": "✨ 核心特性",
+        "subtitle": "我们精心挑选并集成了最优秀的工具和最佳实践",
+        "items": {
+          "fast": {
+            "title": "⚡ 极速开发",
+            "description": "基于 Vite 和 Tailwind CSS v4 的现代化构建体验",
+            "badge": "v4"
+          },
+          "complete": {
+            "title": "🔧 完整配置",
+            "description": "TypeScript、ESLint、国际化等开箱即用",
+            "badge": "Ready"
+          },
+          "outOfBox": {
+            "title": "💝 开箱即用",
+            "description": "集成最佳实践和常用组件库",
+            "badge": "Best"
+          },
+          "typeSafe": {
+            "title": "🛡️ 类型安全",
+            "description": "完整的 TypeScript 类型定义和检查",
+            "badge": "Safe"
+          }
+        }
+      },
+      "techStack": {
+        "title": "🛠️ 技术栈",
+        "description": "使用最新、最稳定的技术栈，确保项目的长期可维护性和高性能表现。"
+      },
+      "messages": {
+        "getStarted": "🚀 欢迎开始使用 Qiuye React Template！",
+        "docsInDev": "📚 文档功能正在开发中，敬请期待！"
+      }
     },
     "about": {
       "title": "关于我们",
-      "description": "了解更多关于这个项目的信息"
+      "subtitle": "Qiuye React Template 是一个现代化的 React 项目脚手架，致力于为开发者提供最佳的开发体验和项目架构。",
+      "features": {
+        "title": "项目特色",
+        "items": {
+          "modern": {
+            "title": "现代化架构",
+            "description": "基于最新的 React 18 和 TypeScript 构建，拥抱现代化开发模式"
+          },
+          "elegant": {
+            "title": "优雅的 UI",
+            "description": "Shadcn/ui + Tailwind CSS v4 打造的精美界面和组件系统"
+          },
+          "dx": {
+            "title": "开发体验",
+            "description": "Vite 极速构建，TypeScript 类型安全，ESLint 代码规范"
+          },
+          "outOfBox": {
+            "title": "开箱即用",
+            "description": "预配置路由、状态管理、国际化、主题切换等常用功能"
+          }
+        }
+      },
+      "timeline": {
+        "title": "发展历程",
+        "items": {
+          "init": {
+            "title": "项目初始化",
+            "description": "创建基础项目结构和配置"
+          },
+          "core": {
+            "title": "核心功能集成",
+            "description": "路由、状态管理、国际化等"
+          },
+          "tailwind": {
+            "title": "Tailwind CSS v4 升级",
+            "description": "采用最新版本的 Tailwind CSS"
+          },
+          "optimize": {
+            "title": "持续优化",
+            "description": "性能优化和开发体验提升"
+          }
+        }
+      },
+      "techStack": {
+        "title": "技术栈",
+        "description": "我们精心挑选了最优秀的工具和库，确保项目的现代化、可维护性和开发效率。"
+      },
+      "projectInfo": {
+        "title": "项目信息",
+        "version": "版本",
+        "lastUpdate": "最后更新",
+        "license": "许可证",
+        "author": "作者",
+        "github": "GitHub",
+        "viewSource": "查看源码"
+      },
+      "thanks": {
+        "title": "感谢",
+        "content": "感谢所有开源项目的贡献者们，没有你们的努力就没有这个美好的开发生态。也感谢每一位使用这个模板的开发者，你们的反馈让项目变得更好。",
+        "madeWithLove": "Made with Love",
+        "starOnGitHub": "Star on GitHub"
+      }
     },
     "notFound": {
       "title": "页面未找到",

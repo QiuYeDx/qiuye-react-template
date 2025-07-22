@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useTrail, animated, useSpring } from "@react-spring/web";
 import {
   CodeBracketIcon,
@@ -13,6 +14,8 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 
 const About: React.FC = () => {
+  const { t } = useTranslation();
+
   // 页面标题动画
   const titleAnimation = useSpring({
     from: { opacity: 0, transform: "translateY(30px)" },
@@ -83,23 +86,23 @@ const About: React.FC = () => {
   const features = [
     {
       icon: <RocketLaunchIcon className="w-5 h-5" />,
-      title: "现代化架构",
-      description: "基于最新的 React 18 和 TypeScript 构建，拥抱现代化开发模式",
+      title: t("pages.about.features.items.modern.title"),
+      description: t("pages.about.features.items.modern.description"),
     },
     {
       icon: <SparklesIcon className="w-5 h-5" />,
-      title: "优雅的 UI",
-      description: "Shadcn/ui + Tailwind CSS v4 打造的精美界面和组件系统",
+      title: t("pages.about.features.items.elegant.title"),
+      description: t("pages.about.features.items.elegant.description"),
     },
     {
       icon: <CodeBracketIcon className="w-5 h-5" />,
-      title: "开发体验",
-      description: "Vite 极速构建，TypeScript 类型安全，ESLint 代码规范",
+      title: t("pages.about.features.items.dx.title"),
+      description: t("pages.about.features.items.dx.description"),
     },
     {
       icon: <HeartIcon className="w-5 h-5" />,
-      title: "开箱即用",
-      description: "预配置路由、状态管理、国际化、主题切换等常用功能",
+      title: t("pages.about.features.items.outOfBox.title"),
+      description: t("pages.about.features.items.outOfBox.description"),
     },
   ];
 
@@ -123,23 +126,23 @@ const About: React.FC = () => {
   const timelineItems = [
     {
       icon: <CheckCircleIcon className="w-4 h-4 text-green-500" />,
-      title: "项目初始化",
-      description: "创建基础项目结构和配置",
+      title: t("pages.about.timeline.items.init.title"),
+      description: t("pages.about.timeline.items.init.description"),
     },
     {
       icon: <SparklesIcon className="w-4 h-4 text-blue-500" />,
-      title: "核心功能集成",
-      description: "路由、状态管理、国际化等",
+      title: t("pages.about.timeline.items.core.title"),
+      description: t("pages.about.timeline.items.core.description"),
     },
     {
       icon: <StarIcon className="w-4 h-4 text-purple-500" />,
-      title: "Tailwind CSS v4 升级",
-      description: "采用最新版本的 Tailwind CSS",
+      title: t("pages.about.timeline.items.tailwind.title"),
+      description: t("pages.about.timeline.items.tailwind.description"),
     },
     {
       icon: <RocketLaunchIcon className="w-4 h-4 text-orange-500" />,
-      title: "持续优化",
-      description: "性能优化和开发体验提升",
+      title: t("pages.about.timeline.items.optimize.title"),
+      description: t("pages.about.timeline.items.optimize.description"),
     },
   ];
 
@@ -147,10 +150,9 @@ const About: React.FC = () => {
     <div className="min-h-screen bg-background">
       {/* 页面标题 */}
       <animated.div style={titleAnimation} className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">关于我们</h1>
+        <h1 className="text-4xl font-bold mb-4">{t("pages.about.title")}</h1>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-          Qiuye React Template 是一个现代化的 React 项目脚手架，
-          致力于为开发者提供最佳的开发体验和项目架构。
+          {t("pages.about.subtitle")}
         </p>
       </animated.div>
 
@@ -161,7 +163,7 @@ const About: React.FC = () => {
             <CardHeader>
               <h3 className="text-2xl font-bold flex items-center text-foreground">
                 <SparklesIcon className="w-6 h-6 mr-2 text-primary" />
-                项目特色
+                {t("pages.about.features.title")}
               </h3>
             </CardHeader>
             <CardContent>
@@ -193,7 +195,7 @@ const About: React.FC = () => {
             <CardHeader>
               <h3 className="text-2xl font-bold flex items-center text-foreground">
                 <RocketLaunchIcon className="w-6 h-6 mr-2 text-primary" />
-                发展历程
+                {t("pages.about.timeline.title")}
               </h3>
             </CardHeader>
             <CardContent>
@@ -222,12 +224,12 @@ const About: React.FC = () => {
             <CardHeader>
               <h3 className="text-2xl font-bold flex items-center text-foreground">
                 <CodeBracketIcon className="w-6 h-6 mr-2 text-primary" />
-                技术栈
+                {t("pages.about.techStack.title")}
               </h3>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground mb-6">
-                我们精心挑选了最优秀的工具和库，确保项目的现代化、可维护性和开发效率。
+                {t("pages.about.techStack.description")}
               </p>
 
               <div className="grid grid-cols-2 gap-3">
@@ -253,42 +255,52 @@ const About: React.FC = () => {
             <CardHeader>
               <h3 className="text-2xl font-bold flex items-center text-foreground">
                 <StarIcon className="w-6 h-6 mr-2 text-primary" />
-                项目信息
+                {t("pages.about.projectInfo.title")}
               </h3>
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">版本</span>
+                  <span className="text-muted-foreground">
+                    {t("pages.about.projectInfo.version")}
+                  </span>
                   <span className="font-semibold text-foreground">v2.0.0</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">最后更新</span>
+                  <span className="text-muted-foreground">
+                    {t("pages.about.projectInfo.lastUpdate")}
+                  </span>
                   <span className="font-semibold text-foreground">
                     {new Date().toLocaleDateString()}
                   </span>
                 </div>
                 <Separator />
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">许可证</span>
+                  <span className="text-muted-foreground">
+                    {t("pages.about.projectInfo.license")}
+                  </span>
                   <span className="font-semibold text-foreground">MIT</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">作者</span>
+                  <span className="text-muted-foreground">
+                    {t("pages.about.projectInfo.author")}
+                  </span>
                   <span className="font-semibold text-foreground">QiuYeDx</span>
                 </div>
                 <Separator />
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">GitHub</span>
+                  <span className="text-muted-foreground">
+                    {t("pages.about.projectInfo.github")}
+                  </span>
                   <a
                     href="https://github.com/QiuYeDx/qiuye-react-template"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-semibold text-primary hover:text-primary/80 transition-colors underline decoration-2 underline-offset-2 hover:decoration-primary/60"
                   >
-                    查看源码
+                    {t("pages.about.projectInfo.viewSource")}
                   </a>
                 </div>
               </div>
@@ -303,18 +315,17 @@ const About: React.FC = () => {
           <div className="max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold mb-4 flex items-center justify-center text-foreground">
               <HeartIcon className="w-6 h-6 mr-2 text-red-500" />
-              感谢
+              {t("pages.about.thanks.title")}
             </h3>
 
             <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              感谢所有开源项目的贡献者们，没有你们的努力就没有这个美好的开发生态。
-              也感谢每一位使用这个模板的开发者，你们的反馈让项目变得更好。
+              {t("pages.about.thanks.content")}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-medium">
                 <HeartIcon className="w-5 h-5 mr-2" />
-                Made with Love
+                {t("pages.about.thanks.madeWithLove")}
               </div>
 
               <a
@@ -324,7 +335,7 @@ const About: React.FC = () => {
                 className="inline-flex items-center px-6 py-3 bg-border/50 hover:bg-border text-foreground rounded-full font-medium transition-all duration-300 hover:shadow-md group"
               >
                 <CodeBracketIcon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                Star on GitHub
+                {t("pages.about.thanks.starOnGitHub")}
               </a>
             </div>
           </div>

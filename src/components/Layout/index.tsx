@@ -112,7 +112,9 @@ const Layout: React.FC = () => {
               </Button>
             </TooltipTrigger>
             <TooltipContent side="bottom" align="center">
-              {theme.mode === "light" ? "切换到暗色模式" : "切换到亮色模式"}
+              {theme.mode === "light"
+                ? t("theme.switchToDark")
+                : t("theme.switchToLight")}
             </TooltipContent>
           </Tooltip>
 
@@ -123,17 +125,17 @@ const Layout: React.FC = () => {
                 variant="ghost"
                 size="sm"
                 className="w-10 h-10 md:w-11 md:h-11 rounded-lg transition-all duration-200 scale-in cursor-pointer"
-                aria-label="语言选择"
+                aria-label={t("theme.languageSelect")}
               >
                 <GlobeAltIcon className="w-5 h-5" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => i18n.changeLanguage("zh-CN")}>
-                中文
+                {t("language.chinese")}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => i18n.changeLanguage("en-US")}>
-                English
+                {t("language.english")}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

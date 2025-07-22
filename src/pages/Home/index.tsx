@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { useSpring, animated, useTrail } from "@react-spring/web";
 import { toast } from "sonner";
 import {
@@ -15,6 +16,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const Home: React.FC = () => {
+  const { t } = useTranslation();
+
   // 主要内容动画
   const heroAnimation = useSpring({
     from: { opacity: 0, transform: "translateY(50px)" },
@@ -27,35 +30,35 @@ const Home: React.FC = () => {
   const features = [
     {
       icon: <RocketLaunchIcon className="w-6 h-6" />,
-      title: "⚡ 极速开发",
-      description: "基于 Vite 和 Tailwind CSS v4 的现代化构建体验",
+      title: t("pages.home.features.items.fast.title"),
+      description: t("pages.home.features.items.fast.description"),
       color: "text-blue-500",
       bgColor: "bg-blue-50 dark:bg-blue-950/20",
-      badge: "v4",
+      badge: t("pages.home.features.items.fast.badge"),
     },
     {
       icon: <CogIcon className="w-6 h-6" />,
-      title: "🔧 完整配置",
-      description: "TypeScript、ESLint、国际化等开箱即用",
+      title: t("pages.home.features.items.complete.title"),
+      description: t("pages.home.features.items.complete.description"),
       color: "text-green-500",
       bgColor: "bg-green-50 dark:bg-green-950/20",
-      badge: "Ready",
+      badge: t("pages.home.features.items.complete.badge"),
     },
     {
       icon: <HeartIcon className="w-6 h-6" />,
-      title: "💝 开箱即用",
-      description: "集成最佳实践和常用组件库",
+      title: t("pages.home.features.items.outOfBox.title"),
+      description: t("pages.home.features.items.outOfBox.description"),
       color: "text-red-500",
       bgColor: "bg-red-50 dark:bg-red-950/20",
-      badge: "Best",
+      badge: t("pages.home.features.items.outOfBox.badge"),
     },
     {
       icon: <ShieldCheckIcon className="w-6 h-6" />,
-      title: "🛡️ 类型安全",
-      description: "完整的 TypeScript 类型定义和检查",
+      title: t("pages.home.features.items.typeSafe.title"),
+      description: t("pages.home.features.items.typeSafe.description"),
       color: "text-purple-500",
       bgColor: "bg-purple-50 dark:bg-purple-950/20",
-      badge: "Safe",
+      badge: t("pages.home.features.items.typeSafe.badge"),
     },
   ];
 
@@ -68,14 +71,8 @@ const Home: React.FC = () => {
   });
 
   const handleGetStarted = () => {
-    toast.success("🚀 欢迎开始使用 Qiuye React Template！");
+    toast.success(t("pages.home.messages.getStarted"));
   };
-
-  // const handleViewDocs = () => {
-  //   toast("📚 文档功能正在开发中，敬请期待！", {
-  //     icon: "📖",
-  //   });
-  // };
 
   const handleViewGitHub = () => {
     window.open("https://github.com/QiuYeDx/qiuye-react-template", "_blank");
@@ -94,16 +91,15 @@ const Home: React.FC = () => {
         <animated.div style={heroAnimation}>
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             <SparklesIcon className="w-4 h-4 mr-2" />
-            全新 Tailwind CSS v4 支持
+            {t("pages.home.badge")}
           </div>
 
           <h1 className="text-4xl md:text-6xl font-bold mb-6 slide-in-from-bottom">
-            现代化 React 模板
+            {t("pages.home.title")}
           </h1>
 
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8 slide-in-from-bottom">
-            基于 React 18 + TypeScript + Vite + Tailwind CSS v4
-            构建的现代化项目脚手架， 集成最佳实践，让你专注于业务开发。
+            {t("pages.home.subtitle")}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
@@ -112,19 +108,9 @@ const Home: React.FC = () => {
               size="lg"
               className="px-8 py-3 text-base font-medium rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
             >
-              开始使用
+              {t("pages.home.getStarted")}
               <ArrowRightIcon className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
-
-            {/* <Button
-              variant="secondary"
-              size="lg"
-              onClick={handleViewDocs}
-              className="px-8 py-3 text-base font-medium rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer"
-            >
-              查看文档
-            </Button> */}
-
             <Button
               variant="outline"
               size="lg"
@@ -132,7 +118,7 @@ const Home: React.FC = () => {
               className="px-8 py-3 text-base font-medium rounded-xl hover:shadow-md transition-all duration-300 cursor-pointer group"
             >
               <CodeBracketIcon className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-              GitHub
+              {t("pages.home.github")}
             </Button>
           </div>
         </animated.div>
@@ -142,10 +128,10 @@ const Home: React.FC = () => {
       <div className="mb-16">
         <animated.div style={trail[0]} className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4 text-foreground">
-            ✨ 核心特性
+            {t("pages.home.features.title")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            我们精心挑选并集成了最优秀的工具和最佳实践
+            {t("pages.home.features.subtitle")}
           </p>
         </animated.div>
 
@@ -190,7 +176,7 @@ const Home: React.FC = () => {
         <Card className="glass p-8 text-center">
           <CardContent className="p-0">
             <h3 className="text-2xl font-bold mb-6 text-foreground">
-              🛠️ 技术栈
+              {t("pages.home.techStack.title")}
             </h3>
 
             <div className="flex flex-wrap justify-center gap-3 mb-6">
@@ -215,7 +201,7 @@ const Home: React.FC = () => {
             </div>
 
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              使用最新、最稳定的技术栈，确保项目的长期可维护性和高性能表现。
+              {t("pages.home.techStack.description")}
             </p>
           </CardContent>
         </Card>
