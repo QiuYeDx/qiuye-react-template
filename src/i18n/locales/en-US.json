@@ -16,6 +16,7 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "loadingDebug": "Debug Center",
     "dashboard": "Dashboard",
     "settings": "Settings"
   },
@@ -140,6 +141,44 @@
       "title": "Page Not Found",
       "description": "Sorry, the page you visited does not exist",
       "backHome": "Back to Home"
+    },
+    "loadingDebug": {
+      "title": "Loading Effects Debug Center",
+      "subtitle": "Test and debug various loading component effects and performance",
+      "mainLoadingTest": {
+        "title": "Main Loading Component Test",
+        "durationLabel": "Loading Duration",
+        "testMainLoading": "Test Main Loading",
+        "testSimpleLoading": "Test Simple Loading",
+        "startAutoTest": "Start Auto Test",
+        "stopAutoTest": "Stop Auto Test",
+        "status": {
+          "mainLoading": "Main Loading",
+          "simpleLoading": "Simple Loading",
+          "autoTest": "Auto Test",
+          "showing": "Showing",
+          "hidden": "Hidden",
+          "running": "Running",
+          "stopped": "Stopped"
+        }
+      },
+      "variants": {
+        "title": "Loading Style Variants",
+        "rotatingRing": "Rotating Ring",
+        "bouncingDots": "Bouncing Dots",
+        "rhythmBars": "Rhythm Bars"
+      },
+      "preview": {
+        "title": "Simple Loading Component Preview"
+      },
+      "usage": {
+        "title": "Usage Instructions",
+        "mainLoading": "Full-screen overlay loading, suitable for page-level loading scenarios",
+        "simpleLoading": "Lightweight loading, suitable for component internal or local areas",
+        "debugFeatures": "Adjustable duration, manual trigger, automatic cycle testing",
+        "styleVariants": "Display different styles of loading animation effects",
+        "performance": "Smooth animation effects using React Spring"
+      }
     }
   }
 } 

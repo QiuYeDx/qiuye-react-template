@@ -35,7 +35,7 @@ const NotFound: React.FC = () => {
           
           {/* 返回按钮 */}
           <Button onClick={handleBackHome} className="inline-flex items-center">
-            <HomeIcon className="w-4 h-4 mr-2" />
+            <HomeIcon className="w-4 h-4 mr-0.5" />
             {t('pages.notFound.backHome')}
           </Button>
         </CardContent>

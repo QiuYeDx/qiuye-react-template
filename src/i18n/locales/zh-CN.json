@@ -16,6 +16,7 @@
   "nav": {
     "home": "首页",
     "about": "关于",
+    "loadingDebug": "调试中心",
     "dashboard": "仪表盘",
     "settings": "设置"
   },
@@ -140,6 +141,44 @@
       "title": "页面未找到",
       "description": "抱歉，您访问的页面不存在",
       "backHome": "返回首页"
+    },
+    "loadingDebug": {
+      "title": "加载效果调试中心",
+      "subtitle": "测试和调试各种加载组件的效果和性能",
+      "mainLoadingTest": {
+        "title": "主加载组件测试",
+        "durationLabel": "加载持续时间",
+        "testMainLoading": "测试主加载",
+        "testSimpleLoading": "测试简单加载",
+        "startAutoTest": "启动自动测试",
+        "stopAutoTest": "停止自动测试",
+        "status": {
+          "mainLoading": "主加载",
+          "simpleLoading": "简单加载",
+          "autoTest": "自动测试",
+          "showing": "显示中",
+          "hidden": "隐藏",
+          "running": "运行中",
+          "stopped": "已停止"
+        }
+      },
+      "variants": {
+        "title": "加载样式变体",
+        "rotatingRing": "旋转圆环",
+        "bouncingDots": "跳动圆点",
+        "rhythmBars": "律动条形"
+      },
+      "preview": {
+        "title": "简单加载组件预览"
+      },
+      "usage": {
+        "title": "使用说明",
+        "mainLoading": "全屏遮罩式加载，适用于页面级别的加载场景",
+        "simpleLoading": "轻量级加载，适用于组件内部或局部区域",
+        "debugFeatures": "可调节持续时间、手动触发、自动循环测试",
+        "styleVariants": "展示不同风格的加载动画效果",
+        "performance": "使用 React Spring 实现流畅的动画效果"
+      }
     }
   }
 } 
