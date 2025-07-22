@@ -108,10 +108,19 @@ const About: React.FC = () => {
 
   // 技术栈动画
   const techTrail = useTrail(techStack.length, {
-    from: { opacity: 0, transform: "scale(0.8)" },
-    to: { opacity: 1, transform: "scale(1)" },
-    config: { tension: 300, friction: 40 },
+    from: {
+      opacity: 0,
+      transform: "translateY(30px) scale(0.9) rotateX(-15deg)",
+      filter: "blur(8px)",
+    },
+    to: {
+      opacity: 1,
+      transform: "translateY(0px) scale(1) rotateX(0deg)",
+      filter: "blur(0px)",
+    },
+    config: { tension: 200, friction: 25 },
     delay: 300,
+    trail: 80, // 每个元素间隔80ms出现
   });
 
   // 特性动画
@@ -120,6 +129,31 @@ const About: React.FC = () => {
     to: { opacity: 1, transform: "translateX(0px)" },
     config: { tension: 280, friction: 60 },
     delay: 600,
+  });
+
+  // 卡片容器动画
+  const cardContainers = [
+    "features", // 特性卡片
+    "timeline", // 发展历程卡片
+    "techStack", // 技术栈卡片
+    "projectInfo", // 项目信息卡片
+    "thanks", // 感谢卡片
+  ];
+
+  const cardTrail = useTrail(cardContainers.length, {
+    from: {
+      opacity: 0,
+      transform: "translateY(40px) scale(0.95)",
+      filter: "blur(10px)",
+    },
+    to: {
+      opacity: 1,
+      transform: "translateY(0px) scale(1)",
+      filter: "blur(0px)",
+    },
+    config: { tension: 180, friction: 30 },
+    delay: 400,
+    trail: 150, // 每个卡片间隔150ms出现
   });
 
   // 时间线数据
@@ -159,188 +193,204 @@ const About: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
         {/* 项目介绍 */}
         <div className="space-y-6">
-          <Card>
-            <CardHeader>
-              <h3 className="text-2xl font-bold flex items-center text-foreground">
-                <SparklesIcon className="w-6 h-6 mr-2 text-primary" />
-                {t("pages.about.features.title")}
-              </h3>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {featureTrail.map((style, index) => {
-                  const feature = features[index];
-                  return (
-                    <animated.div key={index} style={style}>
-                      <div className="flex items-start space-x-3 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
-                        <div className="text-primary mt-1">{feature.icon}</div>
-                        <div>
-                          <div className="font-semibold text-foreground mb-1">
-                            {feature.title}
+          <animated.div style={cardTrail[0]}>
+            <Card>
+              <CardHeader>
+                <h3 className="text-2xl font-bold flex items-center text-foreground">
+                  <SparklesIcon className="w-6 h-6 mr-2 text-primary" />
+                  {t("pages.about.features.title")}
+                </h3>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {featureTrail.map((style, index) => {
+                    const feature = features[index];
+                    return (
+                      <animated.div key={index} style={style}>
+                        <div className="flex items-start space-x-3 p-4 rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors">
+                          <div className="text-primary mt-1">
+                            {feature.icon}
                           </div>
-                          <div className="text-sm text-muted-foreground leading-relaxed">
-                            {feature.description}
+                          <div>
+                            <div className="font-semibold text-foreground mb-1">
+                              {feature.title}
+                            </div>
+                            <div className="text-sm text-muted-foreground leading-relaxed">
+                              {feature.description}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </animated.div>
-                  );
-                })}
-              </div>
-            </CardContent>
-          </Card>
+                      </animated.div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+          </animated.div>
 
           {/* 发展历程 */}
-          <Card>
-            <CardHeader>
-              <h3 className="text-2xl font-bold flex items-center text-foreground">
-                <RocketLaunchIcon className="w-6 h-6 mr-2 text-primary" />
-                {t("pages.about.timeline.title")}
-              </h3>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                {timelineItems.map((item, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <div className="flex-shrink-0 mt-1">{item.icon}</div>
-                    <div>
-                      <div className="font-semibold text-foreground">
-                        {item.title}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {item.description}
+          <animated.div style={cardTrail[1]}>
+            <Card>
+              <CardHeader>
+                <h3 className="text-2xl font-bold flex items-center text-foreground">
+                  <RocketLaunchIcon className="w-6 h-6 mr-2 text-primary" />
+                  {t("pages.about.timeline.title")}
+                </h3>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {timelineItems.map((item, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <div className="flex-shrink-0 mt-1">{item.icon}</div>
+                      <div>
+                        <div className="font-semibold text-foreground">
+                          {item.title}
+                        </div>
+                        <div className="text-sm text-muted-foreground">
+                          {item.description}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </animated.div>
         </div>
 
         {/* 技术栈 */}
         <div className="space-y-6">
-          <Card>
-            <CardHeader>
-              <h3 className="text-2xl font-bold flex items-center text-foreground">
-                <CodeBracketIcon className="w-6 h-6 mr-2 text-primary" />
-                {t("pages.about.techStack.title")}
-              </h3>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground mb-6">
-                {t("pages.about.techStack.description")}
-              </p>
+          <animated.div style={cardTrail[2]}>
+            <Card>
+              <CardHeader>
+                <h3 className="text-2xl font-bold flex items-center text-foreground">
+                  <CodeBracketIcon className="w-6 h-6 mr-2 text-primary" />
+                  {t("pages.about.techStack.title")}
+                </h3>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-6">
+                  {t("pages.about.techStack.description")}
+                </p>
 
-              <div className="grid grid-cols-2 gap-3">
-                {techTrail.map((style, index) => {
-                  const tech = techStack[index];
-                  return (
-                    <animated.div key={tech.name} style={style}>
-                      <Badge
-                        variant="secondary"
-                        className={`w-full text-center py-2 px-3 rounded-lg font-medium hover:scale-105 transition-transform cursor-default ${tech.color}`}
-                      >
-                        {tech.name}
-                      </Badge>
-                    </animated.div>
-                  );
-                })}
-              </div>
-            </CardContent>
-          </Card>
+                <div className="grid grid-cols-2 gap-3">
+                  {techTrail.map((style, index) => {
+                    const tech = techStack[index];
+                    return (
+                      <animated.div key={tech.name} style={style}>
+                        <Badge
+                          variant="secondary"
+                          className={`w-full text-center py-2 px-3 rounded-lg font-medium hover:bg-secondary/80 transition-transform cursor-default`}
+                        >
+                          {tech.name}
+                        </Badge>
+                      </animated.div>
+                    );
+                  })}
+                </div>
+              </CardContent>
+            </Card>
+          </animated.div>
 
           {/* 项目统计 */}
-          <Card>
-            <CardHeader>
-              <h3 className="text-2xl font-bold flex items-center text-foreground">
-                <StarIcon className="w-6 h-6 mr-2 text-primary" />
-                {t("pages.about.projectInfo.title")}
-              </h3>
-            </CardHeader>
-            <CardContent>
-              <div className="space-y-4">
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">
-                    {t("pages.about.projectInfo.version")}
-                  </span>
-                  <span className="font-semibold text-foreground">v2.0.0</span>
+          <animated.div style={cardTrail[3]}>
+            <Card>
+              <CardHeader>
+                <h3 className="text-2xl font-bold flex items-center text-foreground">
+                  <StarIcon className="w-6 h-6 mr-2 text-primary" />
+                  {t("pages.about.projectInfo.title")}
+                </h3>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-muted-foreground">
+                      {t("pages.about.projectInfo.version")}
+                    </span>
+                    <span className="font-semibold text-foreground">
+                      v2.0.0
+                    </span>
+                  </div>
+                  <Separator />
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-muted-foreground">
+                      {t("pages.about.projectInfo.lastUpdate")}
+                    </span>
+                    <span className="font-semibold text-foreground">
+                      {new Date().toLocaleDateString()}
+                    </span>
+                  </div>
+                  <Separator />
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-muted-foreground">
+                      {t("pages.about.projectInfo.license")}
+                    </span>
+                    <span className="font-semibold text-foreground">MIT</span>
+                  </div>
+                  <Separator />
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-muted-foreground">
+                      {t("pages.about.projectInfo.author")}
+                    </span>
+                    <span className="font-semibold text-foreground">
+                      QiuYeDx
+                    </span>
+                  </div>
+                  <Separator />
+                  <div className="flex justify-between items-center py-2">
+                    <span className="text-muted-foreground">
+                      {t("pages.about.projectInfo.github")}
+                    </span>
+                    <a
+                      href="https://github.com/QiuYeDx/qiuye-react-template"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-semibold text-primary hover:text-primary/80 transition-colors underline decoration-2 underline-offset-2 hover:decoration-primary/60"
+                    >
+                      {t("pages.about.projectInfo.viewSource")}
+                    </a>
+                  </div>
                 </div>
-                <Separator />
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">
-                    {t("pages.about.projectInfo.lastUpdate")}
-                  </span>
-                  <span className="font-semibold text-foreground">
-                    {new Date().toLocaleDateString()}
-                  </span>
-                </div>
-                <Separator />
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">
-                    {t("pages.about.projectInfo.license")}
-                  </span>
-                  <span className="font-semibold text-foreground">MIT</span>
-                </div>
-                <Separator />
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">
-                    {t("pages.about.projectInfo.author")}
-                  </span>
-                  <span className="font-semibold text-foreground">QiuYeDx</span>
-                </div>
-                <Separator />
-                <div className="flex justify-between items-center py-2">
-                  <span className="text-muted-foreground">
-                    {t("pages.about.projectInfo.github")}
-                  </span>
-                  <a
-                    href="https://github.com/QiuYeDx/qiuye-react-template"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="font-semibold text-primary hover:text-primary/80 transition-colors underline decoration-2 underline-offset-2 hover:decoration-primary/60"
-                  >
-                    {t("pages.about.projectInfo.viewSource")}
-                  </a>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </animated.div>
         </div>
       </div>
 
       {/* 感谢板块 */}
-      <Card className="glass text-center">
-        <CardContent className="p-8">
-          <div className="max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4 flex items-center justify-center text-foreground">
-              <HeartIcon className="w-6 h-6 mr-2 text-red-500" />
-              {t("pages.about.thanks.title")}
-            </h3>
+      <animated.div style={cardTrail[4]}>
+        <Card className="glass text-center">
+          <CardContent className="p-8">
+            <div className="max-w-2xl mx-auto">
+              <h3 className="text-2xl font-bold mb-4 flex items-center justify-center text-foreground">
+                <HeartIcon className="w-6 h-6 mr-2 text-red-500" />
+                {t("pages.about.thanks.title")}
+              </h3>
 
-            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-              {t("pages.about.thanks.content")}
-            </p>
+              <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                {t("pages.about.thanks.content")}
+              </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-medium">
-                <HeartIcon className="w-5 h-5 mr-2" />
-                {t("pages.about.thanks.madeWithLove")}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <div className="inline-flex items-center px-6 py-3 bg-primary/10 text-primary rounded-full font-medium">
+                  <HeartIcon className="w-5 h-5 mr-2" />
+                  {t("pages.about.thanks.madeWithLove")}
+                </div>
+
+                <a
+                  href="https://github.com/QiuYeDx/qiuye-react-template"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-border/50 hover:bg-border text-foreground rounded-full font-medium transition-all duration-300 hover:shadow-md group"
+                >
+                  <CodeBracketIcon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                  {t("pages.about.thanks.starOnGitHub")}
+                </a>
               </div>
-
-              <a
-                href="https://github.com/QiuYeDx/qiuye-react-template"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-border/50 hover:bg-border text-foreground rounded-full font-medium transition-all duration-300 hover:shadow-md group"
-              >
-                <CodeBracketIcon className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                {t("pages.about.thanks.starOnGitHub")}
-              </a>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </animated.div>
     </div>
   );
 };
