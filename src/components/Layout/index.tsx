@@ -167,9 +167,13 @@ const Layout: React.FC = () => {
 
           {/* 宽屏显示图标+文字组合 */}
           <div className="hidden md:flex items-center space-x-1">
-            <img src={QiuyeLeafIcon} alt="Qiuye" className="w-11 h-11" />
+            <img
+              src={QiuyeLeafIcon}
+              alt={t("app.title")}
+              className="w-11 h-11"
+            />
             <div className="text-xl font-bold text-foreground whitespace-nowrap">
-              QiuYe Template
+              {t("app.title")}
             </div>
           </div>
         </div>
@@ -177,7 +181,7 @@ const Layout: React.FC = () => {
         {/* 窄屏居中显示文字 */}
         <div className="md:hidden absolute left-1/2 -translate-x-1/2">
           <div className="text-xl font-bold text-foreground whitespace-nowrap">
-            QiuYe Template
+            {t("app.title")}
           </div>
         </div>
 
@@ -269,7 +273,7 @@ const Layout: React.FC = () => {
       <footer className="bg-muted/30 border-t border-border text-center py-6">
         <div className="container">
           <p className="text-muted-foreground text-sm">
-            QiuYe React Template ©{new Date().getFullYear()} Created with ❤️ by{" "}
+            {t("app.fullTitle")} ©{new Date().getFullYear()} Created with ❤️ by{" "}
             <a
               href="https://github.com/QiuYeDx"
               target="_blank"

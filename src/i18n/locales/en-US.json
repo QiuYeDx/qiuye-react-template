@@ -1,4 +1,8 @@
 {
+  "app": {
+    "title": "QiuYe Template",
+    "fullTitle": "QiuYe React Template"
+  },
   "common": {
     "confirm": "Confirm",
     "cancel": "Cancel",
@@ -72,13 +76,13 @@
         "description": "Using the latest and most stable tech stack to ensure long-term maintainability and high performance."
       },
       "messages": {
-        "getStarted": "🚀 Welcome to start using QiuYe React Template!",
+        "getStarted": "🚀 Welcome to start using this template!",
         "docsInDev": "📚 Documentation is under development, stay tuned!"
       }
     },
     "about": {
       "title": "About Us",
-      "subtitle": "QiuYe React Template is a modern React project scaffold, committed to providing developers with the best development experience and project architecture.",
+      "subtitle": "This is a modern React project scaffold, committed to providing developers with the best development experience and project architecture.",
       "features": {
         "title": "Project Features",
         "items": {
