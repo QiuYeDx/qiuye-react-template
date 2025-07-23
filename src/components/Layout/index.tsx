@@ -75,7 +75,11 @@ const Layout: React.FC = () => {
           <div className="md:hidden mr-2">
             <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="sm" className="w-10 h-10 p-0">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="w-10 h-10 p-0 cursor-pointer"
+                >
                   <Bars3Icon className="size-6" />
                   <span className="sr-only">{t("nav.menu")}</span>
                 </Button>
