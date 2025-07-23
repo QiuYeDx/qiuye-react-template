@@ -56,8 +56,8 @@ const Layout: React.FC = () => {
             />
           </div>
           {/* 宽屏显示图标+文字组合 */}
-          <div className="hidden md:flex items-center space-x-3">
-            <img src={QiuyeLeafIcon} alt="Qiuye" className="w-8 h-8" />
+          <div className="hidden md:flex items-center space-x-1">
+            <img src={QiuyeLeafIcon} alt="Qiuye" className="w-11 h-11" />
             <div className="text-xl font-bold text-foreground whitespace-nowrap">
               QiuYe Template
             </div>
@@ -127,7 +127,7 @@ const Layout: React.FC = () => {
                 variant="ghost"
                 size="sm"
                 onClick={toggleTheme}
-                className="w-10 h-10 md:w-11 md:h-11 rounded-lg transition-all duration-200 scale-in cursor-pointer"
+                className="w-11 h-11 rounded-lg transition-all duration-200 scale-in cursor-pointer"
               >
                 {theme.mode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
@@ -145,7 +145,7 @@ const Layout: React.FC = () => {
                 asChild
                 variant="ghost"
                 size="sm"
-                className="w-10 h-10 md:w-11 md:h-11 rounded-lg transition-all duration-200 scale-in cursor-pointer"
+                className="w-11 h-11 rounded-lg transition-all duration-200 scale-in cursor-pointer"
                 aria-label={t("theme.languageSelect")}
               >
                 <GlobeAltIcon className="w-5 h-5" />
