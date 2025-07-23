@@ -1,7 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { MoonIcon, SunIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
+import {
+  MoonIcon,
+  SunIcon,
+  GlobeAltIcon,
+  Bars3Icon,
+} from "@heroicons/react/24/outline";
 // Logo资源引入
 import QiuyeLeafIcon from "@/assets/images/logos/qiuye-leaf-icon.svg";
 import { useThemeStore } from "@/store/useThemeStore";
@@ -26,12 +31,21 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { Separator } from "@/components/ui/separator";
 
 const Layout: React.FC = () => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const { theme, setMode } = useThemeStore();
   const { isLoading, config } = useLoadingStore();
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   // 路由切换时滚动到页面顶部
   useEffect(() => {
@@ -42,19 +56,115 @@ const Layout: React.FC = () => {
     setMode(theme.mode === "light" ? "dark" : "light");
   };
 
+  const closeSheet = () => {
+    setIsSheetOpen(false);
+  };
+
+  const navItems = [
+    { path: "/", key: "nav.home" },
+    { path: "/about", key: "nav.about" },
+    { path: "/loading-debug", key: "nav.loadingDebug" },
+  ];
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <header className="sticky top-0 z-50 h-16 flex items-center justify-between px-4 md:px-6 border-b border-border/50 bg-background">
         <div className="flex items-center basis-1/4">
-          {/* 窄屏显示图标 */}
-          <div className="md:hidden">
-            <img
-              src={QiuyeLeafIcon}
-              alt="QiuYe Template"
-              className="w-11 h-11"
-            />
+          {/* 移动端汉堡菜单按钮 */}
+          <div className="md:hidden mr-2">
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="sm" className="w-10 h-10 p-0">
+                  <Bars3Icon className="size-6" />
+                  <span className="sr-only">{t("nav.menu")}</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-80 p-0">
+                <SheetHeader className="p-6 pb-4">
+                  <SheetTitle className="text-left">{t("nav.menu")}</SheetTitle>
+                </SheetHeader>
+
+                <div className="px-6 space-y-4">
+                  {/* 导航菜单 */}
+                  <div className="space-y-2">
+                    <h3 className="text-sm font-medium text-muted-foreground mb-3">
+                      {t("nav.navigation")}
+                    </h3>
+                    {navItems.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={closeSheet}
+                        className={`flex items-center w-full h-10 px-3 rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground ${
+                          location.pathname === item.path
+                            ? "bg-accent text-accent-foreground"
+                            : "text-foreground"
+                        }`}
+                      >
+                        {t(item.key)}
+                      </Link>
+                    ))}
+                  </div>
+
+                  <Separator />
+
+                  {/* 主题切换 */}
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-muted-foreground">
+                      {t("theme.appearance")}
+                    </h3>
+                    <Button
+                      variant="ghost"
+                      onClick={toggleTheme}
+                      className="w-full justify-start h-10 px-3"
+                    >
+                      {theme.mode === "light" ? (
+                        <MoonIcon className="w-5 h-5 mr-3" />
+                      ) : (
+                        <SunIcon className="w-5 h-5 mr-3" />
+                      )}
+                      {theme.mode === "light"
+                        ? t("theme.switchToDark")
+                        : t("theme.switchToLight")}
+                    </Button>
+                  </div>
+
+                  <Separator />
+
+                  {/* 语言切换 */}
+                  <div className="space-y-3">
+                    <h3 className="text-sm font-medium text-muted-foreground">
+                      {t("theme.language")}
+                    </h3>
+                    <div className="space-y-1">
+                      <Button
+                        variant={
+                          i18n.language === "zh-CN" ? "secondary" : "ghost"
+                        }
+                        onClick={() => i18n.changeLanguage("zh-CN")}
+                        className="w-full justify-start h-10 px-3"
+                      >
+                        <GlobeAltIcon className="w-5 h-5 mr-3" />
+                        {t("language.chinese")}
+                      </Button>
+                      <Button
+                        variant={
+                          i18n.language === "en-US" ? "secondary" : "ghost"
+                        }
+                        onClick={() => i18n.changeLanguage("en-US")}
+                        className="w-full justify-start h-10 px-3"
+                      >
+                        <GlobeAltIcon className="w-5 h-5 mr-3" />
+                        {t("language.english")}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
+
           {/* 宽屏显示图标+文字组合 */}
           <div className="hidden md:flex items-center space-x-1">
             <img src={QiuyeLeafIcon} alt="Qiuye" className="w-11 h-11" />
@@ -64,62 +174,42 @@ const Layout: React.FC = () => {
           </div>
         </div>
 
-        <div className="max-w-md basis-1/2 flex justify-center mx-1">
+        {/* 窄屏居中显示文字 */}
+        <div className="md:hidden absolute left-1/2 -translate-x-1/2">
+          <div className="text-xl font-bold text-foreground whitespace-nowrap">
+            QiuYe Template
+          </div>
+        </div>
+
+        {/* 桌面端导航菜单 */}
+        <div className="max-w-md basis-1/2 justify-center mx-1 hidden md:flex">
           <NavigationMenu>
             <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuLink asChild active={location.pathname === "/"}>
-                  <Link
-                    to="/"
-                    className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 ${
-                      location.pathname === "/"
-                        ? "bg-accent text-accent-foreground"
-                        : "text-foreground"
-                    }`}
+              {navItems.map((item) => (
+                <NavigationMenuItem key={item.path}>
+                  <NavigationMenuLink
+                    asChild
+                    active={location.pathname === item.path}
                   >
-                    {t("nav.home")}
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  asChild
-                  active={location.pathname === "/about"}
-                >
-                  <Link
-                    to="/about"
-                    className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 ${
-                      location.pathname === "/about"
-                        ? "bg-accent text-accent-foreground"
-                        : "text-foreground"
-                    }`}
-                  >
-                    {t("nav.about")}
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <NavigationMenuLink
-                  asChild
-                  active={location.pathname === "/loading-debug"}
-                >
-                  <Link
-                    to="/loading-debug"
-                    className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 ${
-                      location.pathname === "/loading-debug"
-                        ? "bg-accent text-accent-foreground"
-                        : "text-foreground"
-                    }`}
-                  >
-                    {t("nav.loadingDebug")}
-                  </Link>
-                </NavigationMenuLink>
-              </NavigationMenuItem>
+                    <Link
+                      to={item.path}
+                      className={`group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50 ${
+                        location.pathname === item.path
+                          ? "bg-accent text-accent-foreground"
+                          : "text-foreground"
+                      }`}
+                    >
+                      {t(item.key)}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
             </NavigationMenuList>
           </NavigationMenu>
         </div>
 
-        <div className="flex justify-end items-center space-x-2 basis-1/4">
+        {/* 桌面端右侧按钮 */}
+        <div className="justify-end items-center space-x-2 basis-1/4 hidden md:flex">
           <Tooltip delayDuration={300}>
             <TooltipTrigger>
               <Button

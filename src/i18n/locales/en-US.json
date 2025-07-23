@@ -18,12 +18,16 @@
     "about": "About",
     "loadingDebug": "Debug",
     "dashboard": "Dashboard",
-    "settings": "Settings"
+    "settings": "Settings",
+    "menu": "Menu",
+    "navigation": "Navigation"
   },
   "theme": {
     "switchToDark": "Switch to dark mode",
     "switchToLight": "Switch to light mode",
-    "languageSelect": "Language selection"
+    "languageSelect": "Language selection",
+    "appearance": "Appearance",
+    "language": "Language"
   },
   "language": {
     "chinese": "中文",

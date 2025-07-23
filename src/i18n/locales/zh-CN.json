@@ -18,12 +18,16 @@
     "about": "关于",
     "loadingDebug": "调试",
     "dashboard": "仪表盘",
-    "settings": "设置"
+    "settings": "设置",
+    "menu": "菜单",
+    "navigation": "导航"
   },
   "theme": {
     "switchToDark": "切换到暗色模式",
     "switchToLight": "切换到亮色模式",
-    "languageSelect": "语言选择"
+    "languageSelect": "语言选择",
+    "appearance": "外观",
+    "language": "语言"
   },
   "language": {
     "chinese": "中文",
