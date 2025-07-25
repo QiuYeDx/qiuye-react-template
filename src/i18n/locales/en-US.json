@@ -37,6 +37,134 @@
     "chinese": "中文",
     "english": "English"
   },
+  "user": {
+    "login": "Login",
+    "logout": "Logout",
+    "profile": "Profile",
+    "account": "Account",
+    "notLoggedIn": "Not logged in",
+    "welcome": "Welcome",
+    "myAccount": "My Account",
+    "settings": "Settings",
+    "loginToAccessMore": "Login to access more features"
+  },
+  "profile": {
+    "title": "Profile",
+    "subtitle": "Manage your account information and preferences",
+    "tabs": {
+      "general": "General",
+      "security": "Security",
+      "preferences": "Preferences"
+    },
+    "general": {
+      "basicInfo": "Basic Information",
+      "name": "Name",
+      "email": "Email",
+      "bio": "Bio",
+      "bioPlaceholder": "Tell us about yourself...",
+      "avatar": "Avatar",
+      "changeAvatar": "Change Avatar",
+      "uploadAvatar": "Upload Avatar",
+      "removeAvatar": "Remove Avatar"
+    },
+    "security": {
+      "passwordSecurity": "Password Security",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmNewPassword": "Confirm New Password",
+      "changePassword": "Change Password",
+      "twoFactor": "Two-Factor Authentication",
+      "enableTwoFactor": "Enable Two-Factor Authentication",
+      "twoFactorDesc": "Add an extra layer of security to your account",
+      "sessions": "Login Sessions",
+      "currentSession": "Current Session",
+      "otherSessions": "Other Sessions",
+      "revokeSession": "Revoke Session",
+      "revokeAllSessions": "Revoke All Other Sessions"
+    },
+    "preferences": {
+      "appearance": "Appearance",
+      "language": "Language",
+      "theme": "Theme",
+      "notifications": "Notifications",
+      "emailNotifications": "Email Notifications",
+      "pushNotifications": "Push Notifications",
+      "marketingEmails": "Marketing Emails",
+      "securityAlerts": "Security Alerts"
+    },
+    "actions": {
+      "save": "Save Changes",
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "saved": "Saved",
+      "edit": "Edit",
+      "delete": "Delete"
+    },
+    "messages": {
+      "saveSuccess": "Profile updated successfully",
+      "saveError": "Failed to save changes",
+      "passwordChangeSuccess": "Password changed successfully",
+      "passwordChangeError": "Failed to change password",
+      "invalidCurrentPassword": "Current password is incorrect",
+      "passwordMismatch": "New password confirmation does not match"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Login to your account",
+      "email": "Email",
+      "password": "Password",
+      "forgotPassword": "Forgot password?",
+      "loginButton": "Login",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "orContinueWith": "Or continue with",
+      "loginWithGoogle": "Login with Google",
+      "loginWithGithub": "Login with GitHub",
+      "loginWithApple": "Login with Apple"
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Sign up to get started",
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "registerButton": "Sign up",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "orContinueWith": "Or continue with"
+    },
+    "validation": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email format",
+      "passwordRequired": "Password is required",
+      "passwordTooShort": "Password must be at least 6 characters",
+      "nameRequired": "Name is required",
+      "nameTooShort": "Name must be at least 2 characters",
+      "confirmPasswordRequired": "Please confirm password",
+      "passwordMismatch": "Passwords do not match"
+    },
+    "messages": {
+      "loginSuccess": "Login successful",
+      "registerSuccess": "Registration successful",
+      "logoutSuccess": "Logout successful",
+      "loginError": "Invalid email or password",
+      "registerError": "Registration failed",
+      "networkError": "Network error, please try again",
+      "emailExists": "Email already registered",
+      "loggingIn": "Logging in...",
+      "registering": "Registering...",
+      "loggingOut": "Logging out..."
+    },
+    "terms": {
+      "agreeToTerms": "By clicking continue, you agree to our",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy"
+    }
+  },
   "pages": {
     "home": {
       "badge": "Latest Tailwind CSS v4 Support",

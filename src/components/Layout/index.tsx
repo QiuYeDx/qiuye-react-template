@@ -39,6 +39,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Separator } from "@/components/ui/separator";
+import { UserProfile } from "@/components/UserProfile";
+import { MobileUserProfile } from "@/components/UserProfile/MobileUserProfile";
 
 const Layout: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -84,84 +86,99 @@ const Layout: React.FC = () => {
                   <span className="sr-only">{t("nav.menu")}</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left" className="w-80 p-0">
-                <SheetHeader className="p-6 pb-4">
+              <SheetContent side="left" className="w-80 p-0 flex flex-col">
+                <SheetHeader className="p-6 pb-4 shrink-0">
                   <SheetTitle className="text-left">{t("nav.menu")}</SheetTitle>
                 </SheetHeader>
 
-                <div className="px-6 space-y-4">
-                  {/* 导航菜单 */}
-                  <div className="space-y-2">
-                    <h3 className="text-sm font-medium text-muted-foreground mb-3">
-                      {t("nav.navigation")}
-                    </h3>
-                    {navItems.map((item) => (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        onClick={closeSheet}
-                        className={`flex items-center w-full h-10 px-3 rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground ${
-                          location.pathname === item.path
-                            ? "bg-accent text-accent-foreground"
-                            : "text-foreground"
-                        }`}
-                      >
-                        {t(item.key)}
-                      </Link>
-                    ))}
-                  </div>
+                {/* 可滚动的主要内容区域 */}
+                <div className="flex-1 overflow-y-auto">
+                  <div className="px-6 space-y-4">
+                    {/* 导航菜单 */}
+                    <div className="space-y-2">
+                      <h3 className="text-sm font-medium text-muted-foreground mb-3">
+                        {t("nav.navigation")}
+                      </h3>
+                      {navItems.map((item) => (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          onClick={closeSheet}
+                          className={`flex items-center w-full h-10 px-3 rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground ${
+                            location.pathname === item.path
+                              ? "bg-accent text-accent-foreground"
+                              : "text-foreground"
+                          }`}
+                        >
+                          {t(item.key)}
+                        </Link>
+                      ))}
+                    </div>
 
-                  <Separator />
+                    <Separator />
 
-                  {/* 主题切换 */}
-                  <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-muted-foreground">
-                      {t("theme.appearance")}
-                    </h3>
-                    <Button
-                      variant="ghost"
-                      onClick={toggleTheme}
-                      className="w-full justify-start h-10 px-3"
-                    >
-                      {theme.mode === "light" ? (
-                        <MoonIcon className="w-5 h-5 mr-3" />
-                      ) : (
-                        <SunIcon className="w-5 h-5 mr-3" />
-                      )}
-                      {theme.mode === "light"
-                        ? t("theme.switchToDark")
-                        : t("theme.switchToLight")}
-                    </Button>
-                  </div>
-
-                  <Separator />
-
-                  {/* 语言切换 */}
-                  <div className="space-y-3">
-                    <h3 className="text-sm font-medium text-muted-foreground">
-                      {t("theme.language")}
-                    </h3>
-                    <div className="space-y-1">
+                    {/* 主题切换 */}
+                    <div className="space-y-3">
+                      <h3 className="text-sm font-medium text-muted-foreground">
+                        {t("theme.appearance")}
+                      </h3>
                       <Button
-                        variant={
-                          i18n.language === "zh-CN" ? "secondary" : "ghost"
-                        }
-                        onClick={() => i18n.changeLanguage("zh-CN")}
+                        variant="ghost"
+                        onClick={toggleTheme}
                         className="w-full justify-start h-10 px-3"
                       >
-                        <GlobeAltIcon className="w-5 h-5 mr-3" />
-                        {t("language.chinese")}
+                        {theme.mode === "light" ? (
+                          <MoonIcon className="w-5 h-5 mr-3" />
+                        ) : (
+                          <SunIcon className="w-5 h-5 mr-3" />
+                        )}
+                        {theme.mode === "light"
+                          ? t("theme.switchToDark")
+                          : t("theme.switchToLight")}
                       </Button>
-                      <Button
-                        variant={
-                          i18n.language === "en-US" ? "secondary" : "ghost"
-                        }
-                        onClick={() => i18n.changeLanguage("en-US")}
-                        className="w-full justify-start h-10 px-3"
-                      >
-                        <GlobeAltIcon className="w-5 h-5 mr-3" />
-                        {t("language.english")}
-                      </Button>
+                    </div>
+
+                    <Separator />
+
+                    {/* 语言切换 */}
+                    <div className="space-y-3 pb-4">
+                      <h3 className="text-sm font-medium text-muted-foreground">
+                        {t("theme.language")}
+                      </h3>
+                      <div className="space-y-1">
+                        <Button
+                          variant={
+                            i18n.language === "zh-CN" ? "secondary" : "ghost"
+                          }
+                          onClick={() => i18n.changeLanguage("zh-CN")}
+                          className="w-full justify-start h-10 px-3"
+                        >
+                          <GlobeAltIcon className="w-5 h-5 mr-3" />
+                          {t("language.chinese")}
+                        </Button>
+                        <Button
+                          variant={
+                            i18n.language === "en-US" ? "secondary" : "ghost"
+                          }
+                          onClick={() => i18n.changeLanguage("en-US")}
+                          className="w-full justify-start h-10 px-3"
+                        >
+                          <GlobeAltIcon className="w-5 h-5 mr-3" />
+                          {t("language.english")}
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 底部用户信息区域 */}
+                <div className="shrink-0 border-t bg-muted/20">
+                  <div className="px-6 py-4">
+                    <div className="space-y-3">
+                      <h3 className="text-sm font-medium text-muted-foreground">
+                        {t("user.account")}
+                      </h3>
+                      <MobileUserProfile onItemClick={closeSheet} />
                     </div>
                   </div>
                 </div>
@@ -263,6 +280,9 @@ const Layout: React.FC = () => {
               </DropdownMenuRadioGroup>
             </DropdownMenuContent>
           </DropdownMenu>
+
+          {/* 用户头像/登录区域 */}
+          <UserProfile />
         </div>
       </header>
 

@@ -37,6 +37,134 @@
     "chinese": "中文",
     "english": "English"
   },
+  "user": {
+    "login": "登录",
+    "logout": "退出登录",
+    "profile": "个人资料",
+    "account": "账户",
+    "notLoggedIn": "未登录",
+    "welcome": "欢迎",
+    "myAccount": "我的账户",
+    "settings": "设置",
+    "loginToAccessMore": "登录以使用更多功能"
+  },
+  "profile": {
+    "title": "个人资料",
+    "subtitle": "管理您的账户信息和偏好设置",
+    "tabs": {
+      "general": "基本信息",
+      "security": "安全设置",
+      "preferences": "偏好设置"
+    },
+    "general": {
+      "basicInfo": "基本信息",
+      "name": "姓名",
+      "email": "邮箱",
+      "bio": "个人简介",
+      "bioPlaceholder": "介绍一下自己...",
+      "avatar": "头像",
+      "changeAvatar": "更换头像",
+      "uploadAvatar": "上传头像",
+      "removeAvatar": "移除头像"
+    },
+    "security": {
+      "passwordSecurity": "密码安全",
+      "currentPassword": "当前密码",
+      "newPassword": "新密码",
+      "confirmNewPassword": "确认新密码",
+      "changePassword": "修改密码",
+      "twoFactor": "双重认证",
+      "enableTwoFactor": "启用双重认证",
+      "twoFactorDesc": "为您的账户添加额外的安全保护",
+      "sessions": "登录会话",
+      "currentSession": "当前会话",
+      "otherSessions": "其他会话",
+      "revokeSession": "撤销会话",
+      "revokeAllSessions": "撤销所有其他会话"
+    },
+    "preferences": {
+      "appearance": "外观",
+      "language": "语言",
+      "theme": "主题",
+      "notifications": "通知设置",
+      "emailNotifications": "邮件通知",
+      "pushNotifications": "推送通知",
+      "marketingEmails": "营销邮件",
+      "securityAlerts": "安全警报"
+    },
+    "actions": {
+      "save": "保存更改",
+      "cancel": "取消",
+      "saving": "保存中...",
+      "saved": "已保存",
+      "edit": "编辑",
+      "delete": "删除"
+    },
+    "messages": {
+      "saveSuccess": "个人资料更新成功",
+      "saveError": "保存失败，请重试",
+      "passwordChangeSuccess": "密码修改成功",
+      "passwordChangeError": "密码修改失败",
+      "invalidCurrentPassword": "当前密码不正确",
+      "passwordMismatch": "新密码确认不匹配"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "欢迎回来",
+      "subtitle": "登录您的账户",
+      "email": "邮箱",
+      "password": "密码",
+      "forgotPassword": "忘记密码？",
+      "loginButton": "登录",
+      "noAccount": "还没有账户？",
+      "signUp": "注册",
+      "orContinueWith": "或使用以下方式继续",
+      "loginWithGoogle": "使用 Google 登录",
+      "loginWithGithub": "使用 GitHub 登录",
+      "loginWithApple": "使用 Apple 登录"
+    },
+    "register": {
+      "title": "创建账户",
+      "subtitle": "注册新账户开始使用",
+      "name": "姓名",
+      "email": "邮箱",
+      "password": "密码",
+      "confirmPassword": "确认密码",
+      "registerButton": "注册",
+      "hasAccount": "已有账户？",
+      "signIn": "登录",
+      "orContinueWith": "或使用以下方式继续"
+    },
+    "validation": {
+      "emailRequired": "邮箱不能为空",
+      "emailInvalid": "邮箱格式不正确",
+      "passwordRequired": "密码不能为空",
+      "passwordTooShort": "密码长度至少6位",
+      "nameRequired": "姓名不能为空",
+      "nameTooShort": "姓名长度至少2位",
+      "confirmPasswordRequired": "请确认密码",
+      "passwordMismatch": "密码确认不匹配"
+    },
+    "messages": {
+      "loginSuccess": "登录成功",
+      "registerSuccess": "注册成功",
+      "logoutSuccess": "退出成功",
+      "loginError": "邮箱或密码错误",
+      "registerError": "注册失败",
+      "networkError": "网络错误，请稍后重试",
+      "emailExists": "邮箱已被注册",
+      "loggingIn": "正在登录...",
+      "registering": "正在注册...",
+      "loggingOut": "正在退出..."
+    },
+    "terms": {
+      "agreeToTerms": "点击继续即表示您同意我们的",
+      "termsOfService": "服务条款",
+      "and": "和",
+      "privacyPolicy": "隐私政策"
+    }
+  },
   "pages": {
     "home": {
       "badge": "全新 Tailwind CSS v4 支持",
