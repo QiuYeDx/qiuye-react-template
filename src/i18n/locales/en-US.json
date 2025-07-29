@@ -65,7 +65,10 @@
       "avatar": "Avatar",
       "changeAvatar": "Change Avatar",
       "uploadAvatar": "Upload Avatar",
-      "removeAvatar": "Remove Avatar"
+      "removeAvatar": "Remove Avatar",
+      "avatarFormats": "JPG, GIF or PNG. 1MB max.",
+      "namePlaceholder": "Enter your name",
+      "emailPlaceholder": "Enter your email address"
     },
     "security": {
       "passwordSecurity": "Password Security",
@@ -80,17 +83,24 @@
       "currentSession": "Current Session",
       "otherSessions": "Other Sessions",
       "revokeSession": "Revoke Session",
-      "revokeAllSessions": "Revoke All Other Sessions"
+      "revokeAllSessions": "Revoke All Other Sessions",
+      "currentPasswordPlaceholder": "Enter your current password",
+      "newPasswordPlaceholder": "Enter your new password",
+      "confirmPasswordPlaceholder": "Confirm your new password"
     },
     "preferences": {
       "appearance": "Appearance",
       "language": "Language",
       "theme": "Theme",
+      "themeDesc": "Switch between light and dark theme",
       "notifications": "Notifications",
       "emailNotifications": "Email Notifications",
+      "emailNotificationsDesc": "Receive important updates and notifications via email",
       "pushNotifications": "Push Notifications",
       "marketingEmails": "Marketing Emails",
-      "securityAlerts": "Security Alerts"
+      "marketingEmailsDesc": "Product updates and promotional information",
+      "securityAlerts": "Security Alerts",
+      "securityAlertsDesc": "Security-related alerts for your account"
     },
     "actions": {
       "save": "Save Changes",

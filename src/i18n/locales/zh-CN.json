@@ -65,7 +65,10 @@
       "avatar": "头像",
       "changeAvatar": "更换头像",
       "uploadAvatar": "上传头像",
-      "removeAvatar": "移除头像"
+      "removeAvatar": "移除头像",
+      "avatarFormats": "JPG、GIF 或 PNG 格式，最大 1MB",
+      "namePlaceholder": "请输入您的姓名",
+      "emailPlaceholder": "请输入您的邮箱地址"
     },
     "security": {
       "passwordSecurity": "密码安全",
@@ -80,17 +83,24 @@
       "currentSession": "当前会话",
       "otherSessions": "其他会话",
       "revokeSession": "撤销会话",
-      "revokeAllSessions": "撤销所有其他会话"
+      "revokeAllSessions": "撤销所有其他会话",
+      "currentPasswordPlaceholder": "请输入当前密码",
+      "newPasswordPlaceholder": "请输入新密码",
+      "confirmPasswordPlaceholder": "请确认新密码"
     },
     "preferences": {
       "appearance": "外观",
       "language": "语言",
       "theme": "主题",
+      "themeDesc": "切换应用的亮色/暗色主题",
       "notifications": "通知设置",
       "emailNotifications": "邮件通知",
+      "emailNotificationsDesc": "接收重要更新和通知的邮件",
       "pushNotifications": "推送通知",
       "marketingEmails": "营销邮件",
-      "securityAlerts": "安全警报"
+      "marketingEmailsDesc": "产品更新和推广信息",
+      "securityAlerts": "安全警报",
+      "securityAlertsDesc": "账户安全相关的警报通知"
     },
     "actions": {
       "save": "保存更改",
