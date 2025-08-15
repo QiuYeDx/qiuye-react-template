@@ -218,5 +218,13 @@
         "performance": "使用 React Spring 实现流畅的动画效果"
       }
     }
+  },
+  "toast": {
+    "requestFailed": "请求失败",
+    "unauthorized": "未授权，请重新登录",
+    "forbidden": "拒绝访问",
+    "notFound": "请求地址出错",
+    "serverError": "服务器内部错误",
+    "networkError": "网络错误"
   }
 }

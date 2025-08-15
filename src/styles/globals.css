@@ -398,3 +398,87 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Toast 自定义样式 */
+.custom-toast {
+  background: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(229, 231, 235) !important;
+  color: rgb(17, 24, 39) !important;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1) !important;
+}
+
+/* 暗色模式下的Toast样式 */
+.dark .custom-toast {
+  background: rgb(28, 28, 28) !important;
+  border: 1px solid rgb(100, 100, 100) !important;
+  color: rgb(249, 250, 251) !important;
+}
+
+/* 保持成功图标的绿色 */
+.custom-toast[data-type="success"] svg {
+  color: #22c55e !important;
+}
+
+/* 确保错误图标保持红色 */
+.custom-toast[data-type="error"] svg {
+  color: #ef4444 !important;
+}
+
+/* 移除默认的彩色背景和边框 - 成功状态 */
+.custom-toast[data-type="success"] {
+  background: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(229, 231, 235) !important;
+  color: rgb(17, 24, 39) !important;
+}
+
+.dark .custom-toast[data-type="success"] {
+  background: rgb(28, 28, 28) !important;
+  border: 1px solid rgb(100, 100, 100) !important;
+  color: rgb(249, 250, 251) !important;
+}
+
+/* 移除默认的彩色背景和边框 - 错误状态 */
+.custom-toast[data-type="error"] {
+  background: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(229, 231, 235) !important;
+  color: rgb(17, 24, 39) !important;
+}
+
+.dark .custom-toast[data-type="error"] {
+  background: rgb(28, 28, 28) !important;
+  border: 1px solid rgb(100, 100, 100) !important;
+  color: rgb(249, 250, 251) !important;
+}
+
+/* 移除默认的彩色背景和边框 - 其他状态 */
+.custom-toast[data-type="info"] {
+  background: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(229, 231, 235) !important;
+  color: rgb(17, 24, 39) !important;
+}
+
+.custom-toast[data-type="info"] svg {
+  color: #3b82f6 !important;
+}
+
+.dark .custom-toast[data-type="info"] {
+  background: rgb(28, 28, 28) !important;
+  border: 1px solid rgb(100, 100, 100) !important;
+  color: rgb(249, 250, 251) !important;
+}
+
+.custom-toast[data-type="warning"] {
+  background: rgb(255, 255, 255) !important;
+  border: 1px solid rgb(229, 231, 235) !important;
+  color: rgb(17, 24, 39) !important;
+}
+
+.custom-toast[data-type="warning"] svg {
+  color: #f59e0b !important;
+}
+
+.dark .custom-toast[data-type="warning"] {
+  background: rgb(28, 28, 28) !important;
+  border: 1px solid rgb(100, 100, 100) !important;
+  color: rgb(249, 250, 251) !important;
+}
