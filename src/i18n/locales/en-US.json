@@ -356,5 +356,13 @@
         "performance": "Smooth animation effects using React Spring"
       }
     }
+  },
+  "toast": {
+    "requestFailed": "Request failed",
+    "unauthorized": "Unauthorized, please log in again",
+    "forbidden": "Access denied",
+    "notFound": "Request address error",
+    "serverError": "Internal server error",
+    "networkError": "Network error"
   }
 }

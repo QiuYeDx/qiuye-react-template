@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { toast } from "sonner";
 import { useUserStore } from "@/store/useUserStore";
+import i18n from "@/i18n";
 
 // 创建axios实例
 const request = axios.create({
@@ -34,8 +35,8 @@ request.interceptors.response.use(
     if (data.code === 200) {
       return data.data;
     } else {
-      toast.error(data.message || "请求失败");
-      return Promise.reject(new Error(data.message || "请求失败"));
+      toast.error(data.message || i18n.t("toast.requestFailed"));
+      return Promise.reject(new Error(data.message || i18n.t("toast.requestFailed")));
     }
   },
   (error) => {
@@ -44,23 +45,23 @@ request.interceptors.response.use(
     if (response) {
       switch (response.status) {
         case 401:
-          toast.error("未授权，请重新登录");
+          toast.error(i18n.t("toast.unauthorized"));
           useUserStore.getState().logout();
           break;
         case 403:
-          toast.error("拒绝访问");
+          toast.error(i18n.t("toast.forbidden"));
           break;
         case 404:
-          toast.error("请求地址出错");
+          toast.error(i18n.t("toast.notFound"));
           break;
         case 500:
-          toast.error("服务器内部错误");
+          toast.error(i18n.t("toast.serverError"));
           break;
         default:
-          toast.error("网络错误");
+          toast.error(i18n.t("toast.networkError"));
       }
     } else {
-      toast.error("网络错误");
+      toast.error(i18n.t("toast.networkError"));
     }
 
     return Promise.reject(error);

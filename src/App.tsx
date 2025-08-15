@@ -14,8 +14,10 @@ function App() {
           <AppRoutes />
           <Toaster
             position="top-right"
-            richColors
             theme={themeConfig.mode === "dark" ? "dark" : "light"}
+            toastOptions={{
+              className: 'custom-toast',
+            }}
           />
         </div>
       </BrowserRouter>
