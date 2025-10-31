@@ -68,7 +68,7 @@ const Home: React.FC = () => {
     to: { opacity: 1, transform: "translateY(0px) scale(1)" },
     config: { tension: 280, friction: 60 },
     delay: 600,
-  });
+  }).reverse();
 
   const handleGetStarted = () => {
     toast.success(t("pages.home.messages.getStarted"));
@@ -181,7 +181,7 @@ const Home: React.FC = () => {
 
             <div className="flex flex-wrap justify-center gap-3 mb-6">
               {[
-                "React 18",
+                "React 19",
                 "TypeScript",
                 "Vite",
                 "Tailwind CSS v4",

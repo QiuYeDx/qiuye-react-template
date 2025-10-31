@@ -60,7 +60,7 @@ const LoadingDebug: React.FC = () => {
     config: { tension: 200, friction: 28 },
     delay: 300,
     trail: 120, // 每个卡片间隔120ms出现
-  });
+  }).reverse();
 
   // 自动测试效果
   useEffect(() => {

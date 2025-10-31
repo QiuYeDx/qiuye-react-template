@@ -41,7 +41,7 @@
     "home": {
       "badge": "Latest Tailwind CSS v4 Support",
       "title": "Modern React Template",
-      "subtitle": "A modern project scaffold built with React 18 + TypeScript + Vite + Tailwind CSS v4, integrating best practices to let you focus on business development.",
+      "subtitle": "A modern project scaffold built with React 19 + TypeScript + Vite + Tailwind CSS v4, integrating best practices to let you focus on business development.",
       "getStarted": "Get Started",
       "viewDocs": "View Docs",
       "github": "GitHub",
@@ -88,7 +88,7 @@
         "items": {
           "modern": {
             "title": "Modern Architecture",
-            "description": "Built with the latest React 18 and TypeScript, embracing modern development patterns"
+            "description": "Built with the latest React 19 and TypeScript, embracing modern development patterns"
           },
           "elegant": {
             "title": "Elegant UI",
