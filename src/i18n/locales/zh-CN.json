@@ -179,7 +179,7 @@
     "home": {
       "badge": "全新 Tailwind CSS v4 支持",
       "title": "现代化 React 模板",
-      "subtitle": "基于 React 18 + TypeScript + Vite + Tailwind CSS v4 构建的现代化项目脚手架，集成最佳实践，让你专注于业务开发。",
+      "subtitle": "基于 React 19 + TypeScript + Vite + Tailwind CSS v4 构建的现代化项目脚手架，集成最佳实践，让你专注于业务开发。",
       "getStarted": "开始使用",
       "viewDocs": "查看文档",
       "github": "GitHub",
@@ -226,7 +226,7 @@
         "items": {
           "modern": {
             "title": "现代化架构",
-            "description": "基于最新的 React 18 和 TypeScript 构建，拥抱现代化开发模式"
+            "description": "基于最新的 React 19 和 TypeScript 构建，拥抱现代化开发模式"
           },
           "elegant": {
             "title": "优雅的 UI",

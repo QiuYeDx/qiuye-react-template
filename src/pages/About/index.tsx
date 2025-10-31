@@ -27,7 +27,7 @@ const About: React.FC = () => {
   // 技术栈数据
   const techStack = [
     {
-      name: "React 18",
+      name: "React 19",
       type: "framework",
       color: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300",
     },
@@ -121,7 +121,7 @@ const About: React.FC = () => {
     config: { tension: 200, friction: 25 },
     delay: 300,
     trail: 80, // 每个元素间隔80ms出现
-  });
+  }).reverse();
 
   // 特性动画
   const featureTrail = useTrail(features.length, {
@@ -129,7 +129,7 @@ const About: React.FC = () => {
     to: { opacity: 1, transform: "translateX(0px)" },
     config: { tension: 280, friction: 60 },
     delay: 600,
-  });
+  }).reverse();
 
   // 卡片容器动画
   const cardContainers = [
@@ -154,7 +154,7 @@ const About: React.FC = () => {
     config: { tension: 180, friction: 30 },
     delay: 400,
     trail: 150, // 每个卡片间隔150ms出现
-  });
+  }).reverse();
 
   // 时间线数据
   const timelineItems = [
@@ -308,7 +308,7 @@ const About: React.FC = () => {
                       {t("pages.about.projectInfo.version")}
                     </span>
                     <span className="font-semibold text-foreground">
-                      v2.0.0
+                      v2.0.1
                     </span>
                   </div>
                   <Separator />
@@ -318,7 +318,7 @@ const About: React.FC = () => {
                     </span>
                     <span className="font-semibold text-foreground">
                       {/* TODO: 记得更新时间 */}
-                      2025/7/22
+                      2025/10/31
                     </span>
                   </div>
                   <Separator />
