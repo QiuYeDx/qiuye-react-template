@@ -29,7 +29,7 @@
 - **HTTP请求**: Axios
 - **图标**: Heroicons
 - **动画**: React Spring
-- **工具库**: Lodash, ahooks, react-use
+- **工具库**: Lodash, ahooks, @reactuses/core
 
 ## 📦 安装
 
