@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.pnpm-store/
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+# 第三方 registry 组件保持其原始代码风格，便于之后通过 shadcn CLI 对比与更新
+src/components/qiuye-ui/

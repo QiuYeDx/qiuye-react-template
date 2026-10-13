@@ -1,0 +1,6 @@
+# 统一使用 LF 换行，与 .prettierrc 的 endOfLine 保持一致
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.ico binary
+*.woff2 binary
